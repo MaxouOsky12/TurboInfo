@@ -12,14 +12,19 @@
 
   <style>
     :root {
-      --color-bg: #f8fafc;                /* Fond plus doux pour contraste */
+      --color-bg: #f1f5f9;                /* Gris très clair pour un fond épuré */
       --color-card: #ffffff;              /* Blanc pur pour les cartes */
-      --color-text: #111827;              /* Texte sombre pour lisibilité */
-      --color-muted: #6b7280;             /* Gris moderne pour sous-textes */
-      --color-accent: #dc2626;            /* Rouge vibrant pour accents */
-      --border-color: #e5e7eb;            /* Bordure subtile */
-      --shadow-light: rgba(0, 0, 0, 0.1); /* Ombre légère modernisée */
-      --shadow-dark: rgba(0, 0, 0, 0.2);  /* Ombre plus marquée */
+      --color-text: #1e293b;              /* Gris anthracite pour le texte */
+      --color-muted: #475569;             /* Gris moyen pour sous-textes */
+      --color-accent: #1e40af;            /* Bleu profond pour un look premium */
+      --color-accent-hover: #1e3a8a;      /* Bleu légèrement plus sombre pour hover */
+      --border-color: #d4d8dd;            /* Bordure subtile gris clair */
+      --shadow-light: rgba(0, 0, 0, 0.06); /* Ombre légère raffinée */
+      --shadow-dark: rgba(0, 0, 0, 0.12); /* Ombre pour profondeur */
+      --color-dark-bg: #0f172a;           /* Gris très sombre pour mode sombre */
+      --color-dark-card: #1e293b;         /* Gris foncé pour cartes en mode sombre */
+      --color-dark-text: #f1f5f9;         /* Texte clair pour mode sombre */
+      --color-dark-muted: #94a3b8;        /* Gris clair pour sous-textes en mode sombre */
     }
 
     * {
@@ -32,12 +37,28 @@
       background: var(--color-bg);
       color: var(--color-text);
       font-family: 'Inter', sans-serif;
-      padding: clamp(1rem, 4vw, 1.5rem);
-      max-width: 1280px;
+      padding: clamp(1.5rem, 4vw, 2rem);
+      max-width: 1400px;
       margin: auto;
-      line-height: 1.7;
+      line-height: 1.8;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode {
+      background: var(--color-dark-bg);
+      color: var(--color-dark-text);
+    }
+
+    body.dark-mode .featured-article,
+    body.dark-mode .article-card,
+    body.dark-mode .detail-view {
+      background: var(--color-dark-card);
+    }
+
+    body.dark-mode .subtitle {
+      color: var(--color-dark-muted);
     }
 
     h1, h2, h3 {
@@ -46,35 +67,40 @@
     }
 
     h1 {
-      font-size: clamp(2rem, 5vw, 2.5rem);
-      margin-bottom: 0.75rem;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      margin-bottom: 1rem;
       border-bottom: 3px solid var(--color-accent);
-      padding-bottom: 0.5rem;
-      letter-spacing: 0.05em;
+      padding-bottom: 0.75rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
 
     h2 {
-      font-size: clamp(1.5rem, 4vw, 1.75rem);
-      margin-bottom: 0.75rem;
-      color: #3a1e1e;
+      font-size: clamp(1.5rem, 4vw, 1.875rem);
+      margin-bottom: 0.875rem;
+      color: var(--color-text);
+    }
+
+    body.dark-mode h2, body.dark-mode h3 {
+      color: var(--color-dark-text);
     }
 
     h3 {
-      font-size: clamp(1.125rem, 3vw, 1.25rem);
-      margin-bottom: 0.5rem;
-      color: #4b2a2a;
+      font-size: clamp(1.125rem, 3vw, 1.375rem);
+      margin-bottom: 0.625rem;
+      color: var(--color-text);
     }
 
     a {
       color: var(--color-accent);
       text-decoration: none;
-      border-bottom: 1.5px solid var(--color-accent);
+      border-bottom: 2px solid var(--color-accent);
       transition: color 0.3s ease, border-color 0.3s ease;
     }
 
     a:hover {
-      color: #b91c1c;
-      border-color: #b91c1c;
+      color: var(--color-accent-hover);
+      border-color: var(--color-accent-hover);
     }
 
     p.subtitle {
@@ -82,7 +108,7 @@
       font-size: clamp(0.875rem, 2.5vw, 0.9375rem);
       margin-bottom: 2rem;
       border-left: 4px solid var(--color-accent);
-      padding-left: 0.75rem;
+      padding-left: 0.875rem;
       font-style: italic;
       letter-spacing: 0.02em;
     }
@@ -90,15 +116,88 @@
     .date {
       font-size: clamp(0.75rem, 2vw, 0.875rem);
       color: var(--color-muted);
-      margin-top: 0.5rem;
+      margin-top: 0.625rem;
       font-style: italic;
+    }
+
+    body.dark-mode .date, body.dark-mode .article-info p, body.dark-mode .featured-content p {
+      color: var(--color-dark-muted);
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.8));
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px var(--shadow-light);
+    }
+
+    body.dark-mode .header {
+      background: linear-gradient(180deg, rgba(31,41,55,0.95), rgba(31,41,55,0.8));
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .search-bar input {
+      padding: 0.625rem 1.125rem;
+      border: 2px solid var(--border-color);
+      border-radius: 0.5rem;
+      font-size: clamp(0.875rem, 2vw, 0.9375rem);
+      width: 100%;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 6px rgba(30, 64, 175, 0.2);
+      outline: none;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: 2px solid var(--color-accent);
+      color: var(--color-accent);
+      padding: 0.5rem 1.125rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: clamp(0.875rem, 2vw, 0.9375rem);
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      background-color: var(--color-accent);
+      color: var(--color-bg);
+      transform: scale(1.05);
+    }
+
+    body.dark-mode .theme-toggle {
+      color: var(--color-dark-text);
+      border-color: var(--color-dark-text);
+    }
+
+    body.dark-mode .theme-toggle:hover {
+      background-color: var(--color-dark-text);
+      color: var(--color-dark-bg);
     }
 
     /* Conteneur principal */
     .container {
       display: flex;
       flex-direction: column;
-      gap: clamp(1.5rem, 5vw, 2.5rem);
+      gap: clamp(1.75rem, 4vw, 2.5rem);
     }
 
     /* Grand article */
@@ -108,25 +207,25 @@
       overflow: hidden;
       cursor: pointer;
       box-shadow: 0 6px 20px var(--shadow-light);
-      border-left: 6px solid var(--color-accent);
+      border-left: 5px solid var(--color-accent);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .featured-article:hover {
-      transform: translateY(-4px) scale(1.01);
+      transform: translateY(-5px) scale(1.01);
       box-shadow: 0 12px 40px var(--shadow-dark);
     }
 
     .featured-article img {
       width: 100%;
-      height: clamp(200px, 40vw, 400px);
+      height: clamp(220px, 40vw, 400px);
       object-fit: cover;
       transition: transform 0.4s ease;
       border-bottom: 2px solid var(--color-accent);
     }
 
     .featured-article:hover img {
-      transform: scale(1.03);
+      transform: scale(1.04);
     }
 
     .featured-content {
@@ -136,28 +235,28 @@
     .featured-content p {
       color: var(--color-muted);
       font-size: clamp(0.9375rem, 2.5vw, 1rem);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     /* Grille articles */
     .articles-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-      gap: clamp(1rem, 4vw, 1.75rem);
+      gap: clamp(1.25rem, 3.5vw, 1.75rem);
     }
 
     .article-card {
       background: var(--color-card);
-      border-radius: 0.875rem;
+      border-radius: 1rem;
       overflow: hidden;
       cursor: pointer;
       box-shadow: 0 4px 15px var(--shadow-light);
-      border-left: 5px solid transparent;
+      border-left: 4px solid transparent;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     .article-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-5px);
       box-shadow: 0 10px 30px var(--shadow-dark);
       border-left-color: var(--color-accent);
     }
@@ -166,12 +265,12 @@
       width: 100%;
       height: clamp(160px, 25vw, 200px);
       object-fit: cover;
-      transition: transform 0.35s ease;
+      transition: transform 0.4s ease;
       border-bottom: 1.5px solid var(--border-color);
     }
 
     .article-card:hover img {
-      transform: scale(1.04);
+      transform: scale(1.05);
     }
 
     .article-info {
@@ -180,16 +279,72 @@
 
     .article-info h3 {
       font-size: clamp(1.125rem, 3vw, 1.25rem);
-      margin-bottom: 0.5rem;
-      color: #4b2a2a;
-      line-height: 1.4;
+      margin-bottom: 0.625rem;
+      color: var(--color-text);
+      line-height: 1.5;
     }
 
     .article-info p {
       font-size: clamp(0.875rem, 2.5vw, 0.9375rem);
       color: var(--color-muted);
-      line-height: 1.5;
+      line-height: 1.6;
     }
+
+    /* Newsletter (commentée mais fonctionnelle) */
+    /*
+    .newsletter {
+      background: var(--color-card);
+      border-radius: 1rem;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      box-shadow: 0 4px 15px var(--shadow-light);
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-size: clamp(1.5rem, 4vw, 1.75rem);
+      margin-bottom: 1rem;
+    }
+
+    .newsletter form {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 500px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .newsletter input {
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: 0.5rem;
+      font-size: clamp(0.875rem, 2vw, 1rem);
+      width: clamp(200px, 50%, 300px);
+      transition: border-color 0.3s ease;
+    }
+
+    .newsletter input:focus {
+      border-color: var(--color-accent);
+      outline: none;
+    }
+
+    .newsletter button {
+      background: var(--color-accent);
+      color: var(--color-bg);
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .newsletter button:hover {
+      background-color: var(--color-accent-hover);
+      transform: scale(1.05);
+    }
+    */
 
     /* Vue détail */
     .overlay {
@@ -198,7 +353,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       z-index: 900;
       display: none;
       animation: fadeIn 0.3s ease;
@@ -215,7 +370,7 @@
       border-radius: 1rem;
       box-shadow: 0 0 60px var(--shadow-dark);
       overflow-y: auto;
-      padding: clamp(1.5rem, 4vw, 2rem);
+      padding: clamp(1.75rem, 4vw, 2.25rem);
       z-index: 1000;
       color: var(--color-text);
       display: none;
@@ -228,14 +383,14 @@
       height: clamp(200px, 35vw, 350px);
       object-fit: cover;
       border-radius: 0.75rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
       border: 2px solid var(--color-accent);
     }
 
     .detail-view h2 {
       font-size: clamp(1.5rem, 4vw, 2rem);
       margin-bottom: 1rem;
-      color: #551111;
+      color: var(--color-text);
     }
 
     .detail-view p {
@@ -243,7 +398,11 @@
       font-size: clamp(1rem, 2.5vw, 1.125rem);
       margin-bottom: 1.75rem;
       white-space: pre-wrap;
-      color: #333;
+      color: var(--color-text);
+    }
+
+    body.dark-mode .detail-view p {
+      color: var(--color-dark-text);
     }
 
     .detail-source {
@@ -253,6 +412,10 @@
       font-style: italic;
     }
 
+    body.dark-mode .detail-source {
+      color: var(--color-dark-muted);
+    }
+
     .detail-source a {
       font-weight: 600;
       color: var(--color-accent);
@@ -260,8 +423,8 @@
     }
 
     .detail-source a:hover {
-      color: #b91c1c;
-      border-color: #b91c1c;
+      color: var(--color-accent-hover);
+      border-color: var(--color-accent-hover);
     }
 
     .btn-close {
@@ -269,12 +432,12 @@
       background: transparent;
       border: 2px solid var(--color-accent);
       color: var(--color-accent);
-      padding: 0.625rem 1.125rem;
+      padding: 0.625rem 1.25rem;
       font-weight: 600;
       border-radius: 0.5rem;
       cursor: pointer;
       transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-      font-size: clamp(0.875rem, 2vw, 1rem);
+      font-size: clamp(0.875rem, 2vw, 0.9375rem);
       letter-spacing: 0.05em;
     }
 
@@ -291,14 +454,14 @@
     }
 
     @keyframes scaleIn {
-      from { transform: translate(-50%, -50%) scale Later(0.95); opacity: 0; }
+      from { transform: translate(-50%, -50%) scale(0.95); opacity: 0; }
       to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
     }
 
     /* Media Queries pour responsivité */
     @media (max-width: 768px) {
       .featured-article img {
-        height: clamp(180px, 50vw, 300px);
+        height: clamp(180px, 45vw, 320px);
       }
 
       .articles-grid {
@@ -307,22 +470,31 @@
       }
 
       .article-card img {
-        height: clamp(150px, 45vw, 180px);
+        height: clamp(150px, 40vw, 180px);
       }
 
       .detail-view {
         width: 95vw;
-        padding: 1.25rem;
+        padding: 1.5rem;
       }
 
       .detail-view img {
-        height: clamp(150px, 50vw, 250px);
+        height: clamp(160px, 45vw, 280px);
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search-bar {
+        max-width: 100%;
       }
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: clamp(1.75rem, 6vw, 2rem);
+        font-size: clamp(1.75rem, 5.5vw, 2rem);
       }
 
       .featured-content {
@@ -343,21 +515,41 @@
     a:focus,
     .btn-close:focus,
     .featured-article:focus,
-    .article-card:focus {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 2px;
+    .article-card:focus,
+    .theme-toggle:focus {
+      outline: 3px solid var(--color-accent);
+      outline-offset: 3px;
     }
   </style>
 </head>
 <body>
-
-  <h1>Le Journal Auto</h1>
-  <p class="subtitle">Le meilleur des annonces automobiles.</p>
+  <div class="header">
+    <div>
+      <h1>Le Journal Auto</h1>
+      <p class="subtitle">Votre source d'actualités automobiles premium.</p>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Rechercher un article..." aria-label="Rechercher des articles automobiles" />
+      <button class="theme-toggle" id="themeToggle">Mode Sombre</button>
+    </div>
+  </div>
 
   <div class="container" id="articlesContainer">
     <div id="featuredArticle"></div>
     <div class="articles-grid" id="articlesGrid"></div>
   </div>
+
+  <!-- Newsletter commentée mais fonctionnelle -->
+  <!--
+  <div class="newsletter">
+    <h2>Inscrivez-vous à notre newsletter</h2>
+    <p class="subtitle">Recevez les dernières actualités automobiles directement dans votre boîte de réception.</p>
+    <form id="newsletterForm">
+      <input type="email" id="newsletterEmail" placeholder="Entrez votre email" aria-label="Entrez votre adresse email" required />
+      <button type="submit">S'inscrire</button>
+    </form>
+  </div>
+  -->
 
   <div class="overlay" id="overlay"></div>
   <div class="detail-view" id="detailView">
@@ -438,6 +630,9 @@
     const detailContent = document.getElementById('detailContent');
     const detailSourceLink = document.getElementById('detailSourceLink');
     const closeDetailBtn = document.getElementById('closeDetail');
+    const searchInput = document.getElementById('searchInput');
+    const themeToggle = document.getElementById('themeToggle');
+    let filteredArticles = [...articles];
 
     // Trier par date décroissante
     articles.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -489,20 +684,63 @@
       document.body.style.overflow = '';
     }
 
+    function updateArticles() {
+      featuredArticleDiv.innerHTML = '';
+      articlesGridDiv.innerHTML = '';
+      if (filteredArticles.length === 0) {
+        articlesGridDiv.innerHTML = '<p>Aucun article trouvé.</p>';
+        return;
+      }
+      featuredArticleDiv.appendChild(createFeaturedArticle(filteredArticles[0]));
+      for (let i = 1; i < filteredArticles.length; i++) {
+        articlesGridDiv.appendChild(createArticleCard(filteredArticles[i]));
+      }
+    }
+
+    // Recherche
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      filteredArticles = articles.filter(article =>
+        article.title.toLowerCase().includes(searchTerm) ||
+        article.excerpt.toLowerCase().includes(searchTerm) ||
+        article.content.toLowerCase().includes(searchTerm)
+      );
+      updateArticles();
+    });
+
+    // Mode sombre
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      themeToggle.textContent = document.body.classList.contains('dark-mode')
+        ? 'Mode Clair'
+        : 'Mode Sombre';
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+
+    // Charger le thème sauvegardé
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      themeToggle.textContent = 'Mode Clair';
+    }
+
+    // Newsletter (commentée mais fonctionnelle)
+    /*
+    document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail').value;
+      if (email) {
+        alert('Merci pour votre inscription à la newsletter !');
+        document.getElementById('newsletterForm').reset();
+      }
+    });
+    */
+
     closeDetailBtn.addEventListener('click', closeDetail);
     overlay.addEventListener('click', closeDetail);
 
     // Initialisation page
     function init() {
-      if (articles.length === 0) return;
-
-      // Le premier article en grand
-      featuredArticleDiv.appendChild(createFeaturedArticle(articles[0]));
-
-      // Les autres en grille
-      for (let i = 1; i < articles.length; i++) {
-        articlesGridDiv.appendChild(createArticleCard(articles[i]));
-      }
+      updateArticles();
     }
 
     init();
@@ -519,9 +757,8 @@
           date: new Date().toISOString().slice(0, 10)
         };
         articles.unshift(newArticle);
-        featuredArticleDiv.innerHTML = '';
-        articlesGridDiv.innerHTML = '';
-        init();
+        filteredArticles = [...articles];
+        updateArticles();
       }
     });
   </script>
