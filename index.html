@@ -9,6 +9,7 @@
   <meta name="description" content="TurboInfo - Le meilleur site d'actualités automobiles, voitures électriques, Tesla, BMW, Ford et nouveautés du marché automobile." />
   <meta name="keywords" content="automobile, actualités voitures, Tesla, BMW, Ford, voitures électriques, info auto, test auto" />
   <meta name="robots" content="index, follow" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
   <style>
     :root {
@@ -53,7 +54,8 @@
 
     body.dark-mode .featured-article,
     body.dark-mode .article-card,
-    body.dark-mode .detail-view {
+    body.dark-mode .detail-view,
+    body.dark-mode .newsletter {
       background: var(--color-dark-card);
     }
 
@@ -120,7 +122,7 @@
       font-style: italic;
     }
 
-    body.dark-mode .date, body.dark-mode .article-info p, body.dark-mode .featured-content p {
+    body.dark-mode .date, body.dark-mode .article-info p, body.dark-mode .featured-content p, body.dark-mode .newsletter p {
       color: var(--color-dark-muted);
     }
 
@@ -290,6 +292,7 @@
       line-height: 1.6;
     }
 
+    /* Newsletter */
     .newsletter {
       background: var(--color-card);
       border-radius: 1rem;
@@ -487,6 +490,14 @@
       .search-bar {
         max-width: 100%;
       }
+
+      .newsletter form {
+        flex-direction: column;
+      }
+
+      .newsletter input {
+        width: 100%;
+      }
     }
 
     @media (max-width: 480px) {
@@ -506,14 +517,6 @@
         padding: 0.5rem 1rem;
         font-size: 0.875rem;
       }
-
-      .newsletter form {
-        flex-direction: column;
-      }
-
-      .newsletter input {
-        width: 100%;
-      }
     }
 
     /* Amélioration accessibilité */
@@ -521,7 +524,9 @@
     .btn-close:focus,
     .featured-article:focus,
     .article-card:focus,
-    .theme-toggle:focus {
+    .theme-toggle:focus,
+    .newsletter input:focus,
+    .newsletter button:focus {
       outline: 3px solid var(--color-accent);
       outline-offset: 3px;
     }
@@ -564,6 +569,10 @@
   </div>
 
   <script>
+    (function() {
+      emailjs.init("YOUR_PUBLIC_KEY"); // Remplacez par votre clé publique EmailJS
+    })();
+
     const articles = [
       {
         title: "Automobile : Renault prépare un modèle électrifié sur base Geely",
@@ -731,8 +740,17 @@
       e.preventDefault();
       const email = document.getElementById('newsletterEmail').value;
       if (email) {
-        alert('Merci pour votre inscription à la newsletter !');
-        newsletterForm.reset();
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+          user_email: email,
+          message: "Merci de vous être inscrit à la newsletter de TurboInfo ! Vous recevrez bientôt les dernières actualités automobiles."
+        })
+        .then(() => {
+          alert('Inscription réussie ! Vérifiez votre boîte de réception pour la confirmation.');
+          newsletterForm.reset();
+        }, (error) => {
+          alert('Erreur lors de l\'inscription. Veuillez réessayer plus tard.');
+          console.error('EmailJS error:', error);
+        });
       }
     });
 
@@ -748,4 +766,3 @@
   </script>
 </body>
 </html>
-
