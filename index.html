@@ -290,8 +290,6 @@
       line-height: 1.6;
     }
 
-    /* Newsletter (commentée mais fonctionnelle) */
-    /*
     .newsletter {
       background: var(--color-card);
       border-radius: 1rem;
@@ -344,7 +342,6 @@
       background-color: var(--color-accent-hover);
       transform: scale(1.05);
     }
-    */
 
     /* Vue détail */
     .overlay {
@@ -509,6 +506,14 @@
         padding: 0.5rem 1rem;
         font-size: 0.875rem;
       }
+
+      .newsletter form {
+        flex-direction: column;
+      }
+
+      .newsletter input {
+        width: 100%;
+      }
     }
 
     /* Amélioration accessibilité */
@@ -539,8 +544,6 @@
     <div class="articles-grid" id="articlesGrid"></div>
   </div>
 
-  <!-- Newsletter commentée mais fonctionnelle -->
-  <!--
   <div class="newsletter">
     <h2>Inscrivez-vous à notre newsletter</h2>
     <p class="subtitle">Recevez les dernières actualités automobiles directement dans votre boîte de réception.</p>
@@ -549,7 +552,6 @@
       <button type="submit">S'inscrire</button>
     </form>
   </div>
-  -->
 
   <div class="overlay" id="overlay"></div>
   <div class="detail-view" id="detailView">
@@ -632,6 +634,7 @@
     const closeDetailBtn = document.getElementById('closeDetail');
     const searchInput = document.getElementById('searchInput');
     const themeToggle = document.getElementById('themeToggle');
+    const newsletterForm = document.getElementById('newsletterForm');
     let filteredArticles = [...articles];
 
     // Trier par date décroissante
@@ -723,17 +726,15 @@
       themeToggle.textContent = 'Mode Clair';
     }
 
-    // Newsletter (commentée mais fonctionnelle)
-    /*
-    document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+    // Newsletter
+    newsletterForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const email = document.getElementById('newsletterEmail').value;
       if (email) {
         alert('Merci pour votre inscription à la newsletter !');
-        document.getElementById('newsletterForm').reset();
+        newsletterForm.reset();
       }
     });
-    */
 
     closeDetailBtn.addEventListener('click', closeDetail);
     overlay.addEventListener('click', closeDetail);
@@ -744,25 +745,7 @@
     }
 
     init();
-
-    // Pour test: touche "R" pour ajouter un article
-    window.addEventListener('keydown', (e) => {
-      if (e.key.toLowerCase() === 'r') {
-        const newArticle = {
-          title: "Article ajouté au clavier R",
-          excerpt: "Un nouvel article ajouté pour tester le rafraîchissement.",
-          content: "Voici le contenu complet de cet article ajouté via la touche R.",
-          image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1400&auto=format&fit=crop",
-          source: "#",
-          date: new Date().toISOString().slice(0, 10)
-        };
-        articles.unshift(newArticle);
-        filteredArticles = [...articles];
-        updateArticles();
-      }
-    });
   </script>
 </body>
 </html>
-
 
