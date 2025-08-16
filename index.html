@@ -552,15 +552,6 @@
     <div class="articles-grid" id="articlesGrid"></div>
   </div>
 
-  <div class="newsletter">
-    <h2>Inscrivez-vous à notre newsletter</h2>
-    <p class="subtitle">Recevez les dernières actualités automobiles directement dans votre boîte de réception.</p>
-    <form id="newsletterForm">
-      <input type="email" id="newsletterEmail" placeholder="Entrez votre email" aria-label="Entrez votre adresse email" required />
-      <button type="submit">S'inscrire</button>
-    </form>
-  </div>
-
   <div class="overlay" id="overlay"></div>
   <div class="detail-view" id="detailView">
     <button class="btn-close" id="closeDetail">Fermer ✕</button>
@@ -746,25 +737,6 @@
       themeToggle.textContent = 'Mode Clair';
     }
 
-    // Newsletter
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('newsletterEmail').value;
-      if (email) {
-        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-          user_email: email,
-          message: "Merci de vous être inscrit à la newsletter de TurboInfo ! Vous recevrez bientôt les dernières actualités automobiles."
-        })
-        .then(() => {
-          alert('Inscription réussie ! Vérifiez votre boîte de réception pour la confirmation.');
-          newsletterForm.reset();
-        }, (error) => {
-          alert('Erreur lors de l\'inscription. Veuillez réessayer plus tard.');
-          console.error('EmailJS error:', error);
-        });
-      }
-    });
-
     closeDetailBtn.addEventListener('click', closeDetail);
     overlay.addEventListener('click', closeDetail);
 
@@ -777,6 +749,7 @@
   </script>
 </body>
 </html>
+
 
 
 
