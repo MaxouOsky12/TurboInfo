@@ -1,2191 +1,1071 @@
 <!doctype html>
-
 <html lang="fr">
-
 <head>
-
   <meta charset="utf-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <meta name="google-adsense-account" content="ca-pub-8379781357857138">
-
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8379781357857138" crossorigin="anonymous"></script>
-
   <title>TurboInfo - Le Meilleur De L'automobile</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet" />
-
   <meta name="google-site-verification" content="OYInI8VwXMVQGWxIbAGBe0o_2B0PgRQw0oeBRaj5Y-o" />
-
   <meta name="description" content="TurboInfo - Votre source d'actualités automobiles premium : voitures électriques, tests, nouveautés Tesla, BMW, Ford et plus encore." />
-
   <meta name="keywords" content="automobile, actualités voitures, Tesla, BMW, Ford, voitures électriques, info auto, test auto, innovations automobiles" />
-
   <meta name="robots" content="index, follow" />
-
   <meta name="author" content="TurboInfo" />
-
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-
-
   <style>
-
     :root {
-
       --color-bg: #f8fafc;
-
       --color-card: #ffffff;
-
       --color-text: #1a202c;
-
       --color-muted: #6b7280;
-
       --color-accent: #2563eb;
-
       --color-accent-hover: #1d4ed8;
-
       --border-color: #e2e8f0;
-
       --shadow-light: rgba(0, 0, 0, 0.08);
-
       --shadow-dark: rgba(0, 0, 0, 0.15);
-
       --color-dark-bg: #111827;
-
       --color-dark-card: #1f2a44;
-
       --color-dark-text: #e2e8f0;
-
       --color-dark-muted: #9ca3af;
-
       --gradient-accent: linear-gradient(135deg, #2563eb, #7c3aed);
-
     }
-
-
 
     * {
-
       box-sizing: border-box;
-
       margin: 0;
-
       padding: 0;
-
     }
-
-
 
     body {
-
       background: var(--color-bg);
-
       color: var(--color-text);
-
       font-family: 'Inter', sans-serif;
-
       padding: clamp(2rem, 5vw, 3rem);
-
       max-width: 1440px;
-
       margin: auto;
-
       line-height: 1.8;
-
       -webkit-font-smoothing: antialiased;
-
       -moz-osx-font-smoothing: grayscale;
-
       transition: background 0.4s ease, color 0.4s ease;
-
     }
-
-
 
     body.dark-mode {
-
       background: var(--color-dark-bg);
-
       color: var(--color-dark-text);
-
     }
-
-
 
     body.dark-mode .featured-article,
-
     body.dark-mode .article-card,
-
     body.dark-mode .detail-view,
-
     body.dark-mode .newsletter,
-
     body.dark-mode .intro {
-
       background: var(--color-dark-card);
-
     }
-
-
 
     body.dark-mode .subtitle {
-
       color: var(--color-dark-muted);
-
     }
-
-
 
     h1, h2, h3 {
-
       font-family: 'Playfair Display', serif;
-
       color: var(--color-accent);
-
       font-weight: 900;
-
     }
-
-
 
     h1 {
-
       font-family: 'Cinzel', serif;
-
       font-size: clamp(2.75rem, 7vw, 4rem);
-
       margin-bottom: 1.5rem;
-
       background: var(--gradient-accent);
-
       -webkit-background-clip: text;
-
       -webkit-text-fill-color: transparent;
-
       padding-bottom: 0.85rem;
-
       letter-spacing: 0.03em;
-
       text-transform: uppercase;
-
       text-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
-
       position: relative;
-
       animation: slideInTitle 1s ease-out forwards;
-
     }
-
-
 
     h1::after {
-
       content: '';
-
       position: absolute;
-
       top: 0;
-
       left: -100%;
-
       width: 100%;
-
       height: 100%;
-
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-
       animation: shine 4s infinite;
-
     }
-
-
 
     body.dark-mode h1 {
-
       text-shadow: 0 2px 10px rgba(124, 58, 237, 0.4);
-
     }
-
-
 
     @keyframes slideInTitle {
-
       from {
-
         opacity: 0;
-
         transform: translateY(20px);
-
       }
-
       to {
-
         opacity: 1;
-
         transform: translateY(0);
-
       }
-
     }
-
-
 
     @keyframes shine {
-
       0% { left: -100%; }
-
       10% { left: 100%; }
-
       100% { left: 100%; }
-
     }
-
-
 
     h2 {
-
       font-size: clamp(1.75rem, 4.5vw, 2.25rem);
-
       margin-bottom: 1rem;
-
       color: var(--color-text);
-
       font-weight: 800;
-
     }
-
-
 
     body.dark-mode h2, body.dark-mode h3 {
-
       color: var(--color-dark-text);
-
     }
-
-
 
     h3 {
-
       font-size: clamp(1.25rem, 3.5vw, 1.5rem);
-
       margin-bottom: 0.75rem;
-
       color: var(--color-text);
-
     }
-
-
 
     a {
-
       color: var(--color-accent);
-
       text-decoration: none;
-
       border-bottom: 2px solid var(--color-accent);
-
       transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-
     }
-
-
 
     a:hover {
-
       color: var(--color-accent-hover);
-
       border-color: var(--color-accent-hover);
-
       transform: translateY(-2px);
-
     }
-
-
 
     p.subtitle {
-
       color: var(--color-muted);
-
       font-size: clamp(1rem, 2.8vw, 1.125rem);
-
       margin-bottom: 2rem;
-
       border-left: 6px solid var(--color-accent);
-
       padding-left: 1.25rem;
-
       font-style: italic;
-
       letter-spacing: 0.04em;
-
       background: linear-gradient(to right, rgba(37, 99, 235, 0.15), transparent);
-
       transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-
       font-weight: 400;
-
       position: relative;
-
     }
-
-
 
     p.subtitle:hover {
-
       transform: translateX(8px);
-
       background: linear-gradient(to right, rgba(37, 99, 235, 0.25), transparent);
-
     }
-
-
 
     body.dark-mode p.subtitle {
-
       color: var(--color-dark-muted);
-
       background: linear-gradient(to right, rgba(124, 58, 237, 0.15), transparent);
-
     }
-
-
 
     .date {
-
       font-size: clamp(0.8125rem, 2vw, 0.875rem);
-
       color: var(--color-muted);
-
       margin-top: 0.75rem;
-
       font-style: italic;
-
       opacity: 0.85;
-
     }
-
-
 
     body.dark-mode .date, body.dark-mode .article-info p, body.dark-mode .featured-content p, body.dark-mode .newsletter p, body.dark-mode .intro p {
-
       color: var(--color-dark-muted);
-
     }
-
-
 
     /* Header */
-
     .header {
-
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
       margin-bottom: 3rem;
-
       flex-wrap: wrap;
-
       gap: 1.5rem;
-
       background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(241,245,249,0.92));
-
       padding: clamp(1.5rem, 4vw, 2rem);
-
       border-radius: 1.25rem;
-
       box-shadow: 0 8px 24px var(--shadow-light);
-
       backdrop-filter: blur(12px);
-
       position: relative;
-
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-
     }
-
-
 
     .header:hover {
-
       transform: translateY(-4px);
-
       box-shadow: 0 12px 32px var(--shadow-dark);
-
     }
-
-
 
     body.dark-mode .header {
-
       background: linear-gradient(135deg, rgba(31,41,55,0.98), rgba(17,24,39,0.92));
-
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-
     }
-
-
 
     .search-bar {
-
       display: flex;
-
       align-items: center;
-
       gap: 0.75rem;
-
       max-width: 450px;
-
       width: 100%;
-
     }
-
-
 
     .search-bar input {
-
       padding: 0.75rem 1.25rem;
-
       border: 2px solid var(--border-color);
-
       border-radius: 0.75rem;
-
       font-size: clamp(0.9375rem, 2vw, 1rem);
-
       width: 100%;
-
       transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-
       background: var(--color-card);
-
     }
-
-
 
     .search-bar input:focus {
-
       border-color: var(--color-accent);
-
       box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
-
       transform: scale(1.02);
-
       outline: none;
-
     }
-
-
 
     .theme-toggle {
-
       background: var(--gradient-accent);
-
       border: none;
-
       color: var(--color-bg);
-
       padding: 0.625rem 1.25rem;
-
       border-radius: 0.75rem;
-
       cursor: pointer;
-
       font-weight: 600;
-
       font-size: clamp(0.9375rem, 2vw, 1rem);
-
       transition: transform 0.2s ease, box-shadow 0.3s ease;
-
     }
-
-
 
     .theme-toggle:hover {
-
       box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
-
       transform: translateY(-3px);
-
     }
-
-
 
     body.dark-mode .theme-toggle {
-
       background: var(--color-dark-text);
-
       color: var(--color-dark-bg);
-
     }
-
-
 
     body.dark-mode .theme-toggle:hover {
-
       box-shadow: 0 4px 12px rgba(226, 232, 240, 0.4);
-
     }
-
-
 
     /* Section Intro */
-
     .intro {
-
       background: var(--color-card);
-
       border-radius: 1rem;
-
       padding: clamp(2rem, 4vw, 2.5rem);
-
       box-shadow: 0 6px 20px var(--shadow-light);
-
       margin-bottom: 2.5rem;
-
       text-align: center;
-
       position: relative;
-
       overflow: hidden;
-
     }
-
-
 
     .intro::before {
-
       content: '';
-
       position: absolute;
-
       top: 0;
-
       left: 0;
-
       width: 100%;
-
       height: 5px;
-
       background: var(--gradient-accent);
-
     }
-
-
 
     .intro h2 {
-
       font-size: clamp(1.75rem, 4.5vw, 2rem);
-
       margin-bottom: 1.25rem;
-
     }
-
-
 
     .intro p {
-
       font-size: clamp(1rem, 2.5vw, 1.125rem);
-
       color: var(--color-muted);
-
       line-height: 1.8;
-
       max-width: 800px;
-
       margin: 0 auto;
-
     }
-
-
 
     /* Grand article */
-
     .featured-article {
-
       background: var(--color-card);
-
       border-radius: 1.25rem;
-
       overflow: hidden;
-
       cursor: pointer;
-
       box-shadow: 0 8px 24px var(--shadow-light);
-
       border-left: 6px solid var(--color-accent);
-
       transition: transform 0.4s ease, box-shadow 0.4s ease;
-
       position: relative;
-
     }
-
-
 
     .featured-article:hover {
-
       transform: translateY(-8px) scale(1.02);
-
       box-shadow: 0 12px 40px var(--shadow-dark);
-
     }
-
-
 
     .featured-article img {
-
       width: 100%;
-
       height: clamp(250px, 45vw, 450px);
-
       object-fit: cover;
-
       transition: transform 0.5s ease;
-
       border-bottom: 3px solid var(--color-accent);
-
     }
-
-
 
     .featured-article:hover img {
-
       transform: scale(1.06);
-
     }
-
-
 
     .featured-content {
-
       padding: clamp(1.5rem, 3.5vw, 2rem);
-
     }
-
-
 
     .featured-content p {
-
       color: var(--color-muted);
-
       font-size: clamp(1rem, 2.5vw, 1.125rem);
-
       line-height: 1.8;
-
     }
-
-
 
     /* Grille articles */
-
     .articles-grid {
-
       display: grid;
-
       grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-
       gap: clamp(1.5rem, 4vw, 2rem);
-
     }
-
-
 
     .article-card {
-
       background: var(--color-card);
-
       border-radius: 1rem;
-
       overflow: hidden;
-
       cursor: pointer;
-
       box-shadow: 0 6px 20px var(--shadow-light);
-
       border-left: 5px solid transparent;
-
       transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
-
     }
-
-
 
     .article-card:hover {
-
       transform: translateY(-6px);
-
       box-shadow: 0 12px 32px var(--shadow-dark);
-
       border-left-color: var(--color-accent);
-
     }
-
-
 
     .article-card img {
-
       width: 100%;
-
       height: clamp(180px, 30vw, 220px);
-
       object-fit: cover;
-
       transition: transform 0.5s ease;
-
       border-bottom: 2px solid var(--border-color);
-
     }
-
-
 
     .article-card:hover img {
-
       transform: scale(1.07);
-
     }
-
-
 
     .article-info {
-
       padding: clamp(1.25rem, 3vw, 1.5rem);
-
     }
-
-
 
     .article-info h3 {
-
       font-size: clamp(1.25rem, 3.5vw, 1.375rem);
-
       margin-bottom: 0.75rem;
-
       color: var(--color-text);
-
       line-height: 1.6;
-
     }
-
-
-
 
     .article-info p {
-
-
-    .article-info tric {
-
       font-size: clamp(0.9375rem, 2.5vw, 1rem);
-
       color: var(--color-muted);
-
       line-height: 1.7;
-
     }
-
-
 
     /* Newsletter */
-
     .newsletter {
-
       background: var(--color-card);
-
       border-radius: 1rem;
-
       padding: clamp(2rem, 4vw, 2.5rem);
-
       box-shadow: 0 6px 20px var(--shadow-light);
-
       margin-top: 2.5rem;
-
       text-align: center;
-
       position: relative;
-
     }
-
-
 
     .newsletter::before {
-
       content: '';
-
       position: absolute;
-
       top: 0;
-
       left: 0;
-
       width: 100%;
-
       height: 5px;
-
       background: var(--gradient-accent);
-
     }
-
-
 
     .newsletter h2 {
-
       font-size: clamp(1.75rem, 4.5vw, 2rem);
-
       margin-bottom: 1.25rem;
-
     }
-
-
 
     .newsletter form {
-
       display: flex;
-
       gap: 0.75rem;
-
       max-width: 600px;
-
       margin: 0 auto;
-
       flex-wrap: wrap;
-
       justify-content: center;
-
     }
-
-
 
     .newsletter input {
-
       padding: 0.75rem 1.25rem;
-
       border: 2px solid var(--border-color);
-
       border-radius: 0.75rem;
-
       font-size: clamp(0.9375rem, 2vw, 1rem);
-
       width: clamp(220px, 50%, 320px);
-
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
       background: var(--color-bg);
-
     }
-
-
 
     .newsletter input:focus {
-
       border-color: var(--color-accent);
-
       box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
-
       outline: none;
-
     }
-
-
 
     .newsletter button {
-
       background: var(--gradient-accent);
-
       color: var(--color-bg);
-
       border: none;
-
       padding: 0.75rem 2rem;
-
       border-radius: 0.75rem;
-
       font-weight: 600;
-
       cursor: pointer;
-
       transition: transform 0.2s ease, box-shadow 0.3s ease;
-
     }
-
-
 
     .newsletter button:hover {
-
       box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
-
       transform: translateY(-3px);
-
     }
-
-
 
     /* Vue détail */
-
     .overlay {
-
       position: fixed;
-
       top: 0;
-
       left: 0;
-
       right: 0;
-
       bottom: 0;
-
       background: rgba(0, 0, 0, 0.9);
-
       z-index: 900;
-
       display: none;
-
       animation: fadeIn 0.4s ease;
-
     }
-
-
 
     .detail-view {
-
       position: fixed;
-
       top: 50%;
-
       left: 50%;
-
       transform: translate(-50%, -50%);
-
       background: var(--color-card);
-
       width: min(95vw, 1000px);
-
       max-height: 90vh;
-
       border-radius: 1.25rem;
-
       box-shadow: 0 0 80px var(--shadow-dark);
-
       overflow-y: auto;
-
       padding: clamp(2rem, 4.5vw, 2.5rem);
-
       z-index: 1000;
-
       color: var(--color-text);
-
       display: none;
-
       flex-direction: column;
-
       animation: scaleIn 0.4s ease;
-
     }
-
-
 
     .detail-view img {
-
       width: 100%;
-
       height: clamp(220px, 40vw, 400px);
-
       object-fit: cover;
-
       border-radius: 1rem;
-
       margin-bottom: 2rem;
-
       border: 3px solid var(--color-accent);
-
       loading: lazy;
-
     }
-
-
 
     .detail-view h2 {
-
       font-size: clamp(1.75rem, 4.5vw, 2.25rem);
-
       margin-bottom: 1.25rem;
-
       color: var(--color-text);
-
     }
-
-
 
     .detail-view p {
-
       line-height: 1.9;
-
       font-size: clamp(1rem, 2.5vw, 1.125rem);
-
       margin-bottom: 2rem;
-
       white-space: pre-wrap;
-
       color: var(--color-text);
-
     }
-
-
 
     body.dark-mode .detail-view p {
-
       color: var(--color-dark-text);
-
     }
-
-
 
     .detail-source {
-
       font-size: clamp(0.9375rem, 2vw, 1rem);
-
       color: var(--color-muted);
-
       margin-bottom: 1.75rem;
-
       font-style: italic;
-
     }
-
-
 
     body.dark-mode .detail-source {
-
       color: var(--color-dark-muted);
-
     }
-
-
 
     .detail-source a {
-
       font-weight: 600;
-
       color: var(--color-accent);
-
       border-bottom: 2px solid var(--color-accent);
-
     }
-
-
 
     .detail-source a:hover {
-
       color: var(--color-accent-hover);
-
       border-color: var(--color-accent-hover);
-
     }
-
-
 
     .btn-close {
-
       align-self: flex-end;
-
       background: var(--gradient-accent);
-
       border: none;
-
       color: var(--color-bg);
-
       padding: 0.75rem 1.5rem;
-
       font-weight: 600;
-
       border-radius: 0.75rem;
-
       cursor: pointer;
-
       transition: transform 0.2s ease, box-shadow 0.3s ease;
-
       font-size: clamp(0.9375rem, 2vw, 1rem);
-
       letter-spacing: 0.05em;
-
     }
-
-
 
     .btn-close:hover {
-
       box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
-
       transform: translateY(-3px);
-
     }
-
-
 
     /* Animations */
-
     @keyframes fadeIn {
-
       from { opacity: 0; }
-
       to { opacity: 1; }
-
     }
-
-
 
     @keyframes scaleIn {
-
       from { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
-
       to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-
     }
-
-
 
     /* Conteneur pour les publicités */
-
     .ad-container {
-
       margin: 2rem auto;
-
       max-width: 100%;
-
       text-align: center;
-
       padding: 0.5rem;
-
     }
-
-
 
     /* Media Queries pour responsivité */
-
     @media (max-width: 768px) {
-
       .featured-article img {
-
         height: clamp(200px, 50vw, 350px);
-
       }
-
-
 
       .articles-grid {
-
         grid-template-columns: 1fr;
-
         gap: 1.5rem;
-
       }
-
-
 
       .article-card img {
-
         height: clamp(160px, 45vw, 200px);
-
       }
-
-
 
       .detail-view {
-
         width: 98vw;
-
         padding: 1.75rem;
-
       }
-
-
 
       .detail-view img {
-
         height: clamp(180px, 50vw, 300px);
-
       }
-
-
 
       .header {
-
         flex-direction: column;
-
         align-items: flex-start;
-
         padding: 1.25rem;
-
       }
-
-
 
       .search-bar {
-
         max-width: 100%;
-
       }
-
-
 
       .newsletter form {
-
         flex-direction: column;
-
       }
-
-
 
       .newsletter input {
-
         width: 100%;
-
       }
-
     }
-
-
 
     @media (max-width: 480px) {
-
       h1 {
-
         font-size: clamp(2rem, 6vw, 2.75rem);
-
       }
-
-
 
       p.subtitle {
-
         font-size: clamp(0.875rem, 2.5vw, 1rem);
-
         padding-left: 1rem;
-
       }
-
-
 
       .featured-content {
-
         padding: 1.25rem;
-
       }
-
-
 
       .article-info {
-
         padding: 1rem;
-
       }
-
-
 
       .btn-close {
-
         padding: 0.625rem 1.25rem;
-
         font-size: 0.9375rem;
-
       }
-
-
 
       .intro {
-
         padding: 1.5rem;
-
       }
-
     }
-
-
 
     /* Amélioration accessibilité */
-
     a:focus,
-
     .btn-close:focus,
-
     .featured-article:focus,
-
     .article-card:focus,
-
     .theme-toggle:focus,
-
     .newsletter input:focus,
-
     .newsletter button:focus {
-
       outline: 3px solid var(--color-accent);
-
       outline-offset: 4px;
-
       box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
-
     }
-
   </style>
-
 </head>
-
 <body>
-
   <!-- Publicité responsive en haut de page -->
-
   <div class="ad-container">
-
     <ins class="adsbygoogle"
-
          style="display:block"
-
          data-ad-client="ca-pub-8379781357857138"
-
          data-ad-slot="5119591936"
-
          data-ad-format="auto"
-
          data-full-width-responsive="true"></ins>
-
     <script>
-
       (adsbygoogle = window.adsbygoogle || []).push({});
-
     </script>
-
   </div>
-
-
 
   <div class="header">
-
     <div>
-
       <h1>Le Journal Auto</h1>
-
       <p class="subtitle">Votre source d'actualités automobiles premium.</p>
-
     </div>
-
     <div class="search-bar">
-
       <input type="text" id="searchInput" placeholder="Rechercher un article..." aria-label="Rechercher des articles automobiles" />
-
       <button class="theme-toggle" id="themeToggle">Mode Sombre</button>
-
     </div>
-
   </div>
-
-
 
   <!-- Section Introduction -->
-
   <section class="intro">
-
     <h2>Bienvenue sur TurboInfo</h2>
-
     <p>TurboInfo est votre source d'informations incontournable sur l'automobile. Découvrez les dernières actualités, des tests approfondis, et des analyses détaillées sur les innovations du marché, des voitures électriques aux modèles sportifs. Que vous soyez passionné par Tesla, BMW, Ford ou les nouvelles technologies automobiles, nos articles vous tiennent informé avec du contenu riche et actualisé régulièrement.</p>
-
   </section>
 
-
-
   <!-- Conteneur principal avec contenu statique -->
-
   <div class="container" id="articlesContainer">
-
     <div id="featuredArticle">
-
       <div class="featured-article">
-
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Alpine_A290_-_01.jpg/2560px-Alpine_A290_-_01.jpg" alt="Alpine A290" loading="lazy" />
-
         <div class="featured-content">
-
           <h2>Alpine A290 : L’Électrique qui Réveille la Sportivité</h2>
-
           <div class="date">2025-08-16</div>
-
           <p>L’Alpine A290, citadine électrique française, combine agilité et design racé, mais son autonomie reste limitée.</p>
-
         </div>
-
       </div>
-
     </div>
-
     <div class="articles-grid" id="articlesGrid">
-
       <div class="article-card">
-
         <img src="https://cdn.pixabay.com/photo/2021/12/23/09/18/tesla-6889042_640.jpg" alt="Tesla Model Y" loading="lazy" />
-
         <div class="article-info">
-
           <h3>Tesla dévoile une mise à jour majeure du Model Y pour 2026</h3>
-
           <div class="date">2025-08-14</div>
-
           <p>Tesla annonce une refonte du Model Y avec une autonomie accrue et un design optimisé pour 2026.</p>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
-
-
 
   <!-- Publicité responsive en bas de page -->
-
   <div class="ad-container">
-
     <ins class="adsbygoogle"
-
          style="display:block"
-
          data-ad-client="ca-pub-8379781357857138"
-
          data-ad-slot="5119591936"
-
          data-ad-format="auto"
-
          data-full-width-responsive="true"></ins>
-
     <script>
-
       (adsbygoogle = window.adsbygoogle || []).push({});
-
     </script>
-
   </div>
-
-
 
   <div class="overlay" id="overlay"></div>
-
   <div class="detail-view" id="detailView">
-
     <button class="btn-close" id="closeDetail">Fermer ✕</button>
-
     <img id="detailImage" src="" alt="Image article" loading="lazy" />
-
     <h2 id="detailTitle"></h2>
-
     <div class="date" id="detailDate"></div>
-
     <p id="detailContent"></p>
-
     <div class="detail-source">Source : <a href="#" target="_blank" id="detailSourceLink">Voir original</a></div>
-
   </div>
-
-
-
-
-  <!-- Nouvelle publicité centrée en bas -->
-
-
-  <div class="ad-container">
-
-
-    <script type="text/javascript">
-
-
-      atOptions = {
-
-
-        'key' : 'f1768b06f904eac5228cd01e14c265f1',
-
-
-        'format' : 'iframe',
-
-
-        'height' : 60,
-
-
-        'width' : 468,
-
-
-        'params' : {}
-
-
-      };
-
-
-      document.write('<scr' + 'ipt type="text/javascript" src="https://www.topcreativeformat.com/f1768b06f904eac5228cd01e14c265f1/invoke.js"></scr' + 'ipt>');
-
-
-    </script>
-
-
-  </div>
-
-
-
 
   <script>
-
     (function() {
-
       emailjs.init("YOUR_PUBLIC_KEY"); // Remplacez par votre clé publique EmailJS
-
     })();
 
-
-
     const articles = [
-
       {
-
         title: "Alpine A290 : L’Électrique qui Réveille la Sportivité",
-
         excerpt: "L’Alpine A290, citadine électrique française, combine agilité et design racé, mais son autonomie reste limitée.",
-
         content: `Présentée comme la plus accessible des Alpine, l’A290 GT électrique développe 180 ch pour un poids contenu sous 1,5 tonne, offrant une autonomie de 380 km (environ 300 km en usage réel). Son design, avec des jantes 19 pouces et des feux en croix, évoque la compétition, tandis que l’intérieur sportif, doté de sièges sculptés, séduira les amateurs de conduite. Hyperludique sur routes sinueuses, elle excelle en agilité mais souffre sur autoroute, où sa batterie de 52 kWh se vide rapidement. Disponible dès 38 700 €, l’A290 est un jouet idéal pour des escapades dynamiques près de chez soi.
 
-
-
 **Caractéristiques techniques** :
-
 - Puissance : 180 ch
-
 - Autonomie : 380 km (WLTP)
-
 - Batterie : 52 kWh
-
 - Temps de recharge : 30 min (20-80% sur borne rapide)
-
 - Prix de base : 38 700 €
 
-
-
 **Avantages** :
-
 - Design sportif et distinctif
-
 - Conduite agile et réactive
-
 - Prix compétitif pour une voiture électrique sportive
 
-
-
 **Inconvénients** :
-
 - Autonomie limitée sur autoroute
-
 - Réseau de recharge encore perfectible en zones rurales
 
-
-
 **Contexte du marché** :
-
 L’Alpine A290 arrive dans un segment compétitif où des modèles comme la Honda e:Ny1 ou la Mini Cooper SE cherchent à séduire les amateurs de petites électriques performantes. Avec son héritage de marque française et son accent sur la sportivité, l’A290 se distingue comme une alternative premium.`,
-
         image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Alpine_A290_-_01.jpg/2560px-Alpine_A290_-_01.jpg",
-
         source: "https://www.valeursactuelles.com/clubvaleurs/art-de-vivre/automobile-alpine-a290-lagilite-electrique",
-
         date: "2025-08-16"
-
       },
-
       {
-
         title: "Tesla dévoile une mise à jour majeure du Model Y pour 2026",
-
         excerpt: "Tesla annonce une refonte du Model Y avec une autonomie accrue et un design optimisé pour 2026.",
-
-
         content: `Le 14 août 2025, Tesla a révélé une mise à jour significative de son SUV électrique phare, le Model Y, prévue pour un lancement en 2026. Cette version, surnommée 'Juniper', intègre une batterie de nouvelle génération offrant jusqu’à 600 km d’autonomie (WLTP) et une recharge ultra-rapide à 300 kW. Le design extérieur adopte des lignes plus aérodynamiques inspirées du Model 3 Highland, tandis que l’intérieur bénéficie d’un écran central de 17 pouces et d’un système de conduite autonome amélioré. Produit dans les usines de Shanghai et Fremont, ce Model Y vise à consolider la position de Tesla sur le marché des SUV électriques face à une concurrence croissante.
 
-
-        content: `Le 14 août 2025, Tesla a révélé une mise à jour significative de son SUV électrique phare, le Model Y, prévue pour un lancement en 2026. Cette version, surnommée 'Juniper', intègre une batterie de nouvelle génération offrant jusqu’à 600 km d’autonomie (WLTP) et une recharge ultra-rapide à 300 kW. Le design extérieur adopte des lignes plus aérodynamiques inspirées du Model 3 Highland, tandis que l’intérieur bénéficie d’un écran central de 17 pouces et d’un système de conduite autonome amélioré. Produit dans les usines de Shanghai et Fremont, ce Model Y vise à consolider la position de Tesla sur le marché des SUV électriques face à une concurrence croissante
-
-
-
 **Caractéristiques techniques** :
-
 - Autonomie : Jusqu’à 600 km (WLTP)
-
 - Puissance : Jusqu’à 460 ch (version Performance)
-
 - Recharge : 300 kW (20-80% en 15 min)
-
 - Prix estimé : À partir de 45 000 €
 
-
-
 **Avantages** :
-
 - Autonomie impressionnante pour un SUV électrique
-
 - Technologies de pointe (FSD, écran 17 pouces)
-
 - Design modernisé et aérodynamique
 
-
-
 **Inconvénients** :
-
 - Prix potentiellement plus élevé que la concurrence
-
 - Dépendance au réseau de Superchargeurs Tesla
 
-
-
 **Contexte du marché** :
-
 Le Model Y Juniper entre en compétition avec des SUV électriques comme le Hyundai Ioniq 5, le Ford Mustang Mach-E et le BMW iX. Tesla mise sur son écosystème logiciel et son réseau de recharge pour conserver son avance.`,
-
         image: "https://cdn.pixabay.com/photo/2021/12/23/09/18/tesla-6889042_640.jpg",
-
         source: "https://www.tesla.com/en/news/model-y-juniper-update-2026",
-
         date: "2025-08-14"
-
       },
-
       {
-
         title: "Renault prépare un modèle électrifié sur base Geely",
-
         excerpt: "Le constructeur français va s’appuyer sur une plateforme chinoise pour accélérer son offre électrique et hybride.",
-
         content: `Renault travaille sur un futur modèle électrifié reposant sur la base technique du SUV chinois Geely Galaxy E5. Ce projet s’inscrit dans le cadre du partenariat stratégique entre les deux groupes, déjà à l’origine du Grand Koleos en Corée du Sud. L’objectif est de réduire les coûts et de gagner du temps en utilisant une architecture déjà éprouvée. La coentreprise Horse Powertrain pourrait y intégrer son système innovant capable de convertir une plateforme électrique en hybride. Ce véhicule marquera une étape importante dans l’expansion internationale de Renault.
 
-
-
 **Caractéristiques techniques** :
-
 - Plateforme : Geely Galaxy E5
-
 - Motorisation : Électrique ou hybride
-
 - Autonomie estimée : 400-500 km (électrique)
-
 - Prix estimé : À partir de 35 000 €
 
-
-
 **Avantages** :
-
 - Réduction des coûts grâce au partenariat avec Geely
-
 - Flexibilité électrique/hybride
-
 - Expansion sur les marchés asiatiques et européens
 
-
-
 **Inconvénients** :
-
 - Dépendance à une plateforme chinoise
-
 - Image de marque à consolider dans le segment premium
 
-
-
 **Contexte du marché** :
-
 Ce partenariat reflète une tendance croissante où les constructeurs européens collaborent avec des fabricants chinois pour accélérer la transition énergétique. Renault vise à concurrencer des modèles comme le Volkswagen ID.4 et le Toyota Corolla Cross hybride.`,
-
         image: "https://images.caradisiac.com/logos/0/0/2/5/290025/S7-bientot-une-renault-electrifiee-reprenant-la-technologie-du-chinois-geely-217271.jpg",
-
         source: "https://www.caradisiac.com/bientot-une-renault-electrifiee-reprenant-la-technologie-du-chinois-geely-217271.htm",
-
         date: "2025-08-14"
-
       },
-
       {
-
         title: "L'électrique progresse doucement dans les flottes d'entreprise",
-
         excerpt: "Malgré les aides et la pression réglementaire, la transition électrique des flottes professionnelles avance à petits pas.",
-
         content: `Selon une enquête publiée par Le Monde, la part des véhicules électriques dans les flottes d’entreprise françaises reste modeste, même si elle progresse régulièrement. Les gestionnaires évoquent des freins liés au coût d’acquisition, à la disponibilité des modèles et au déploiement d’infrastructures de recharge. Néanmoins, les incitations fiscales et les nouvelles offres de leasing favorisent peu à peu l’intégration des VE dans les parcs, notamment pour réduire les coûts d’exploitation à long terme et anticiper les zones à faibles émissions.
 
-
-
 **Chiffres clés** :
-
 - Part des VE dans les flottes : 12% en 2025 (contre 8% en 2023)
-
 - Coût moyen d’un VE : 40 000 € (contre 25 000 € pour un thermique)
-
 - Réduction des coûts d’exploitation : Jusqu’à 30% sur 5 ans
 
-
-
 **Avantages** :
-
 - Réduction des émissions de CO2
-
 - Économies à long terme sur le carburant
-
 - Conformité avec les réglementations ZFE
 
-
-
 **Inconvénients** :
-
 - Coût initial élevé
-
 - Infrastructure de recharge limitée
 
-
-
 **Contexte du marché** :
-
 La transition vers les flottes électriques est accélérée par les politiques européennes, mais des acteurs comme Stellantis et Tesla dominent ce segment grâce à leurs offres adaptées aux entreprises.`,
-
         image: "https://plus.unsplash.com/premium_photo-1714672716183-a24d36dc9169?q=80&w=1297&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-
         source: "https://www.lemonde.fr/economie/article/2024/10/13/automobile-l-electrique-progresse-doucement-dans-les-flottes-d-entreprise_6350856_3234.html",
-
         date: "2025-08-13"
-
       },
-
       {
-
         title: "Tesla annonce une mise à jour majeure de l'Autopilot avec FSD v14",
-
         excerpt: "Tesla déploie une nouvelle version de son logiciel de conduite autonome, promettant une sécurité accrue et une meilleure performance.",
-
         content: `Tesla prévoit de déployer la version 14 de son logiciel Full Self-Driving (FSD) dans environ six semaines. Cette mise à jour introduira une architecture d'IA améliorée, offrant une sécurité exponentiellement meilleure et une gestion plus fluide des situations complexes. Elon Musk a annoncé que cette version comportera dix fois plus de paramètres que la précédente, visant à rapprocher Tesla d'une conduite entièrement autonome. Cette évolution est cruciale pour les ambitions de Tesla en matière de robotaxis et pour maintenir son avance dans le domaine de la conduite autonome.
 
-
-
 **Caractéristiques techniques** :
-
 - Version : FSD v14
-
 - Paramètres IA : 10x par rapport à v13
-
 - Disponibilité : Fin septembre 2025 (estimée)
 
-
-
 **Avantages** :
-
 - Amélioration significative de la sécurité
-
 - Gestion avancée des scénarios complexes
-
 - Préparation pour les robotaxis
 
-
-
 **Inconvénients** :
-
 - Dépendance à la validation réglementaire
-
 - Coût supplémentaire pour les utilisateurs actuels
 
-
-
 **Contexte du marché** :
-
 Tesla reste leader dans la conduite autonome, mais fait face à la concurrence de Waymo et de constructeurs comme Mercedes-Benz, qui investissent massivement dans des technologies similaires.`,
-
         image: "https://images.unsplash.com/photo-1518183214770-9cffbec72538?auto=format&fit=crop&w=1400&q=80",
-
         source: "https://www.teslaoracle.com/2025/08/11/tesla-to-rollout-fsd-v14-in-6-weeks-with-10x-parameters-and-exponentially-better-safety-says-musk/",
-
         date: "2025-08-11"
-
       },
-
       {
-
         title: "BMW dévoile la i4 M60 xDrive, sa berline électrique hautes performances",
-
         excerpt: "BMW lance la version M60 xDrive de la i4, offrant 601 chevaux et une accélération de 0 à 100 km/h en 3,7 secondes.",
-
         content: `À partir de juillet 2025, BMW a introduit la i4 M60 xDrive, la nouvelle version hautes performances de sa berline électrique. Avec une puissance de 601 chevaux et une accélération de 0 à 100 km/h en seulement 3,7 secondes, cette version surpasse les précédents modèles de la gamme i4. De plus, elle offre une autonomie combinée allant de 433 à 551 km selon la norme WLTP, et un temps de recharge rapide grâce à la technologie de charge haute puissance.
 
-
-
 **Caractéristiques techniques** :
-
 - Puissance : 601 ch
-
 - Accélération : 0-100 km/h en 3,7 s
-
 - Autonomie : 433-551 km (WLTP)
-
 - Recharge : 200 kW (10-80% en 31 min)
 
-
-
 **Avantages** :
-
 - Performances exceptionnelles
-
 - Autonomie compétitive
-
 - Design élégant et sportif
 
-
-
 **Inconvénients** :
-
 - Prix élevé (à partir de 75 000 €)
-
 - Moins d’espace intérieur que certains concurrents
 
-
-
 **Contexte du marché** :
-
 La i4 M60 xDrive concurrence directement la Tesla Model S et la Porsche Taycan, offrant un mélange de luxe, performance et efficacité énergétique pour les amateurs de berlines premium.`,
-
         image: "https://www.bmw-m.com/content/dam/bmw/marketBMW_M/www_bmw-m_com/all-models/m-performance-automobile/i4-m50/2024/bmw-i4-m50-hd-03.jpg",
-
         source: "https://www.press.bmwgroup.com/canada/article/detail/T0450468EN/bmw-model-updates-summer-2025?language=en",
-
         date: "2025-08-09"
-
       },
-
       {
-
         title: "Ford annonce la Mustang Mach-E 2026 avec de nouvelles options de personnalisation",
-
         excerpt: "La nouvelle Mustang Mach-E 2026 offre des couleurs et des options de personnalisation inédites.",
-
         content: `Ford a dévoilé la Mustang Mach-E 2026, introduisant de nouvelles options de personnalisation pour sa berline électrique. Parmi les nouveautés, on trouve des couleurs de carrosserie telles que l'Adriatic Blue Metallic et l'Orange Fury Metallic Tri-coat. De plus, de nouvelles couleurs de ceintures de sécurité, comme le Prime Blue et le Black avec Red Stripe, sont désormais disponibles. Ces ajouts visent à offrir aux clients une expérience plus personnalisée et dynamique.
 
-
-
 **Caractéristiques techniques** :
-
 - Autonomie : Jusqu’à 480 km (WLTP)
-
 - Puissance : Jusqu’à 480 ch (version GT)
-
 - Prix estimé : À partir de 50 000 €
 
-
-
 **Avantages** :
-
 - Options de personnalisation variées
-
 - Performances solides
-
 - Prix compétitif dans le segment
 
-
-
 **Inconvénients** :
-
 - Réseau de recharge moins développé que Tesla
-
 - Moins de technologies autonomes avancées
 
-
-
 **Contexte du marché** :
-
 La Mustang Mach-E 2026 se positionne comme une alternative abordable et stylée face à des concurrents comme le Tesla Model Y et le Hyundai Ioniq 5.`,
-
         image: "https://newfordmodel.com/wp-content/uploads/2025/02/2026-Ford-Mustang-Mach-E-Redesign.jpg",
-
         source: "https://www.ford.com/cars/mustang/2026/models/",
-
         date: "2025-08-08"
-
       },
-
       {
-
         title: "La Chine impose de nouvelles normes pour accélérer la production de véhicules électriques",
-
         excerpt: "Le gouvernement chinois publie des directives strictes pour stimuler la fabrication et l’adoption des VE.",
-
         content: `Dans le cadre de son plan de neutralité carbone, la Chine vient d'annoncer de nouvelles règles pour favoriser la production locale de véhicules électriques, avec des incitations fiscales et des exigences environnementales renforcées. Ces mesures devraient accélérer l'innovation et la compétitivité sur le marché mondial.
 
-
-
 **Chiffres clés** :
-
 - Objectif : 40% des ventes de véhicules neufs en VE d’ici 2030
-
 - Subventions : Jusqu’à 5 000 € par véhicule
-
 - Infrastructures : 20 000 nouvelles bornes de recharge prévues en 2026
 
-
-
 **Avantages** :
-
 - Croissance rapide du marché des VE
-
 - Réduction des émissions à grande échelle
-
 - Innovation technologique accélérée
 
-
-
 **Inconvénients** :
-
 - Dépendance aux matières premières pour batteries
-
 - Concurrence intense pour les constructeurs étrangers
 
-
-
 **Contexte du marché** :
-
 La Chine domine déjà le marché mondial des VE, avec des acteurs comme BYD et NIO. Ces nouvelles normes renforceront leur position tout en mettant la pression sur les constructeurs européens et américains.`,
-
         image: "https://plus.unsplash.com/premium_photo-1664304492320-8359efcaad38?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-
         source: "https://www.reuters.com/business/autos-transportation/china-tighten-ev-battery-rules-reduce-fire-explosion-risks-2025-04-15/",
-
         date: "2025-08-07"
-
       }
-
     ];
 
-
-
     const featuredArticleDiv = document.getElementById('featuredArticle');
-
     const articlesGridDiv = document.getElementById('articlesGrid');
-
     const overlay = document.getElementById('overlay');
-
     const detailView = document.getElementById('detailView');
-
     const detailImage = document.getElementById('detailImage');
-
     const detailTitle = document.getElementById('detailTitle');
-
     const detailDate = document.getElementById('detailDate');
-
     const detailContent = document.getElementById('detailContent');
-
     const detailSourceLink = document.getElementById('detailSourceLink');
-
     const closeDetailBtn = document.getElementById('closeDetail');
-
     const searchInput = document.getElementById('searchInput');
-
     const themeToggle = document.getElementById('themeToggle');
-
     let filteredArticles = [...articles];
 
-
-
     // Trier par date décroissante
-
     articles.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-
-
     function createFeaturedArticle(article) {
-
       const div = document.createElement('div');
-
       div.className = 'featured-article';
-
       div.innerHTML = `
-
         <img src="${article.image}" alt="Image article" loading="lazy" />
-
         <div class="featured-content">
-
           <h2>${article.title}</h2>
-
           <div class="date">${article.date}</div>
-
           <p>${article.excerpt}</p>
-
         </div>
-
       `;
-
       div.addEventListener('click', () => openDetail(article));
-
       return div;
-
     }
-
-
 
     function createArticleCard(article) {
-
       const div = document.createElement('div');
-
       div.className = 'article-card';
-
       div.innerHTML = `
-
         <img src="${article.image}" alt="Image article" loading="lazy" />
-
         <div class="article-info">
-
           <h3>${article.title}</h3>
-
           <div class="date">${article.date}</div>
-
           <p>${article.excerpt}</p>
-
         </div>
-
       `;
-
       div.addEventListener('click', () => openDetail(article));
-
       return div;
-
     }
-
-
 
     function openDetail(article) {
-
       detailImage.src = article.image;
-
       detailTitle.textContent = article.title;
-
       detailDate.textContent = article.date;
-
       detailContent.textContent = article.content;
-
       detailSourceLink.href = article.source;
-
       overlay.style.display = 'block';
-
       detailView.style.display = 'flex';
-
       document.body.style.overflow = 'hidden';
-
     }
-
-
 
     function closeDetail() {
-
       overlay.style.display = 'none';
-
       detailView.style.display = 'none';
-
       document.body.style.overflow = '';
-
     }
-
-
 
     function updateArticles() {
-
       featuredArticleDiv.innerHTML = '';
-
       articlesGridDiv.innerHTML = '';
-
       if (filteredArticles.length === 0) {
-
         articlesGridDiv.innerHTML = '<p>Aucun article trouvé.</p>';
-
         return;
-
       }
-
       featuredArticleDiv.appendChild(createFeaturedArticle(filteredArticles[0]));
-
       for (let i = 1; i < filteredArticles.length; i++) {
-
         articlesGridDiv.appendChild(createArticleCard(filteredArticles[i]));
-
       }
-
     }
-
-
 
     // Recherche
-
     searchInput.addEventListener('input', (e) => {
-
       const searchTerm = e.target.value.toLowerCase();
-
       filteredArticles = articles.filter(article =>
-
         article.title.toLowerCase().includes(searchTerm) ||
-
         article.excerpt.toLowerCase().includes(searchTerm) ||
-
         article.content.toLowerCase().includes(searchTerm)
-
       );
-
       updateArticles();
-
     });
-
-
 
     // Mode sombre
-
     themeToggle.addEventListener('click', () => {
-
       document.body.classList.toggle('dark-mode');
-
       themeToggle.textContent = document.body.classList.contains('dark-mode')
-
         ? 'Mode Clair'
-
         : 'Mode Sombre';
-
       localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-
     });
 
-
-
     // Charger le thème sauvegardé
-
     if (localStorage.getItem('theme') === 'dark') {
-
       document.body.classList.add('dark-mode');
-
       themeToggle.textContent = 'Mode Clair';
-
     }
-
-
 
     closeDetailBtn.addEventListener('click', closeDetail);
-
     overlay.addEventListener('click', closeDetail);
 
-
-
     // Initialisation page
-
     function init() {
-
       updateArticles();
-
     }
 
-
-
     init();
-
   </script>
-
 </body>
-
 </html>
