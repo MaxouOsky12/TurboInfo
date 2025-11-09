@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechShop - Les meilleurs produits tech au meilleur prix</title>
+    <title>TechShop - Les meilleurs produits tech</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -11,11 +11,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #f5f7fa; }
 
-        /* Product Card Hover */
         .product-card {
             background: white;
             border-radius: 16px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             cursor: pointer;
             border: 2px solid #e5e7eb;
         }
@@ -25,63 +24,34 @@
             border-color: #3b82f6;
         }
 
-        /* Image Zoom */
-        .product-image {
-            transition: transform 0.4s ease;
-            overflow: hidden;
-        }
         .product-card:hover .product-image img {
             transform: scale(1.1);
         }
 
-        /* Badge Animations */
+        .product-image img {
+            transition: transform 0.4s ease;
+        }
+
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
         .badge-hot { animation: pulse 2s infinite; }
 
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Star Rating */
         .stars { color: #fbbf24; }
 
-        /* Filter Hover */
         .filter-item:hover {
             background: #f3f4f6;
             padding-left: 12px;
             transition: all 0.2s;
         }
 
-        /* Smooth Scroll */
-        html { scroll-behavior: smooth; }
-
-        /* Banner Animation */
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        .banner-content { animation: slideIn 0.8s ease; }
-
-        /* Price Highlight */
-        .price-box {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid #fbbf24;
-        }
-
-        /* Loading Animation */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .fade-in { animation: fadeInUp 0.6s ease; }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             .sidebar { display: none; }
         }
@@ -103,12 +73,25 @@
                 image: "https://m.media-amazon.com/images/I/81hdWRQnR5L._AC_SL1500_.jpg",
                 note: 4.8,
                 avis: 13799,
-                badge: "🔥Choix D'amazon",
-                stock: "En stock",
-                livraison: "Livraison gratuite",
+                badge: "🔥 Choix Amazon",
                 lienAffilie: "https://amzn.to/3LnvSz8",
                 categorie: "Audio"
             },
+            // Copie-colle ce bloc pour ajouter un produit :
+            /*
+            {
+                nom: "Nom du produit",
+                prix: "99",
+                prixBarre: "149.99",
+                reduction: "-33%",
+                image: "URL_IMAGE_AMAZON",
+                note: 4.5,
+                avis: 1234,
+                badge: "🔥 Top vente",
+                lienAffilie: "TON_LIEN_AFFILIE",
+                categorie: "Gaming"
+            },
+            */
         ];
     </script>
 
@@ -120,74 +103,25 @@
     <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white sticky top-0 z-50 shadow-xl">
         <div class="max-w-7xl mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center gap-8">
-                    <h1 class="text-3xl font-black">Tech<span class="text-yellow-300">Shop</span></h1>
-                    <nav class="hidden md:flex gap-6 text-sm font-medium">
-                        <a href="#" class="hover:text-yellow-300 transition">Accueil</a>
-                        <a href="#" class="hover:text-yellow-300 transition">Promotions</a>
-                        <a href="#" class="hover:text-yellow-300 transition">Nouveautés</a>
-                        <a href="#" class="hover:text-yellow-300 transition">Meilleures ventes</a>
-                    </nav>
-                </div>
-                <div class="flex items-center gap-4">
-                    <button class="hidden md:block bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition">
-                        🔍 Rechercher
-                    </button>
-                    <button class="relative">
-                        <span class="text-2xl">🛒</span>
-                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
-                    </button>
-                </div>
+                <h1 class="text-3xl font-black">Tech<span class="text-yellow-300">Shop</span></h1>
+                <button class="relative">
+                    <span class="text-2xl">🛒</span>
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- Hero Banner -->
-    <section class="bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="banner-content">
-                <h2 class="text-5xl font-black mb-4">🔥 Méga Promotions Tech</h2>
-                <p class="text-2xl mb-6">Jusqu'à -50% sur une sélection de produits !</p>
-                <button class="bg-white text-red-600 px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition shadow-2xl">
-                    Voir toutes les offres →
-                </button>
-            </div>
-        </div>
-    </section>
-
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 py-8">
-        
-        <!-- Stats Bar -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div class="bg-white rounded-2xl p-6 text-center border-2 border-blue-100 fade-in">
-                <div class="text-4xl font-black gradient-text mb-2">${MES_PRODUITS.length}</div>
-                <div class="text-gray-600 font-medium">Produits disponibles</div>
-            </div>
-            <div class="bg-white rounded-2xl p-6 text-center border-2 border-green-100 fade-in" style="animation-delay: 0.1s">
-                <div class="text-4xl font-black text-green-600 mb-2">24h</div>
-                <div class="text-gray-600 font-medium">Livraison rapide</div>
-            </div>
-            <div class="bg-white rounded-2xl p-6 text-center border-2 border-purple-100 fade-in" style="animation-delay: 0.2s">
-                <div class="text-4xl font-black text-purple-600 mb-2">-40%</div>
-                <div class="text-gray-600 font-medium">Réduction moyenne</div>
-            </div>
-            <div class="bg-white rounded-2xl p-6 text-center border-2 border-yellow-100 fade-in" style="animation-delay: 0.3s">
-                <div class="text-4xl font-black text-yellow-600 mb-2">4.8★</div>
-                <div class="text-gray-600 font-medium">Note moyenne</div>
-            </div>
-        </div>
 
         <div class="flex gap-6">
             
             <!-- Sidebar Filters -->
             <aside class="sidebar w-72 bg-white rounded-2xl p-6 h-fit sticky top-24 shadow-lg border-2 border-gray-100">
-                <h3 class="text-2xl font-black mb-6 gradient-text">Filtres</h3>
+                <h3 class="text-2xl font-black mb-6 text-gray-900">Filtres</h3>
                 
                 <div class="mb-6">
-                    <h4 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                        <span>📁</span> Catégories
-                    </h4>
+                    <h4 class="font-bold text-gray-900 mb-3">📁 Catégories</h4>
                     <div class="space-y-2 text-sm">
                         <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition" onclick="filterCategory('all')">
                             <label class="cursor-pointer">Toutes les catégories</label>
@@ -209,44 +143,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="mb-6 pt-6 border-t border-gray-200">
-                    <h4 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                        <span>💰</span> Prix
-                    </h4>
-                    <div class="space-y-2 text-sm">
-                        <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition">
-                            <label class="cursor-pointer">Moins de 50€</label>
-                        </div>
-                        <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition">
-                            <label class="cursor-pointer">50€ - 100€</label>
-                        </div>
-                        <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition">
-                            <label class="cursor-pointer">100€ - 200€</label>
-                        </div>
-                        <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition">
-                            <label class="cursor-pointer">Plus de 200€</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pt-6 border-t border-gray-200">
-                    <h4 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                        <span>⭐</span> Note minimum
-                    </h4>
-                    <div class="space-y-2 text-sm">
-                        <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition">
-                            <label class="cursor-pointer flex items-center gap-2">
-                                <span class="stars">★★★★★</span> 5 étoiles
-                            </label>
-                        </div>
-                        <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition">
-                            <label class="cursor-pointer flex items-center gap-2">
-                                <span class="stars">★★★★</span> 4+ étoiles
-                            </label>
-                        </div>
-                    </div>
-                </div>
             </aside>
 
             <!-- Products Grid -->
@@ -256,16 +152,9 @@
                 <div class="bg-white rounded-2xl p-6 mb-6 shadow-lg border-2 border-gray-100 fade-in">
                     <div class="flex items-center justify-between flex-wrap gap-4">
                         <div>
-                            <h2 class="text-3xl font-black gradient-text mb-2">Nos produits</h2>
-                            <p class="text-gray-600"><span id="products-count">${MES_PRODUITS.length}</span> produits disponibles</p>
+                            <h2 class="text-3xl font-black text-gray-900 mb-2">Nos produits</h2>
+                            <p class="text-gray-600"><span id="products-count"></span> produits disponibles</p>
                         </div>
-                        <select class="bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-medium cursor-pointer hover:border-blue-400 transition">
-                            <option>Trier par pertinence</option>
-                            <option>Prix croissant</option>
-                            <option>Prix décroissant</option>
-                            <option>Meilleures notes</option>
-                            <option>Plus populaires</option>
-                        </select>
                     </div>
                 </div>
 
@@ -276,60 +165,17 @@
             </div>
         </div>
 
-        <!-- CTA Section -->
-        <section class="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-center text-white shadow-2xl fade-in">
-            <h3 class="text-4xl font-black mb-4">📺 Retrouve mes tests en vidéo</h3>
-            <p class="text-xl mb-8 opacity-90">Tous ces produits sont testés et reviewés sur ma chaîne YouTube !</p>
-            <button class="bg-red-600 hover:bg-red-700 px-10 py-5 rounded-2xl font-black text-xl transition shadow-2xl">
-                🔔 S'abonner à la chaîne
-            </button>
-        </section>
-
     </main>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white mt-16 py-12">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h4 class="text-2xl font-black mb-4">Tech<span class="text-yellow-300">Shop</span></h4>
-                    <p class="text-gray-400 text-sm">Les meilleurs produits tech au meilleur prix</p>
-                </div>
-                <div>
-                    <h5 class="font-bold mb-3">Navigation</h5>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Accueil</a></li>
-                        <li><a href="#" class="hover:text-white transition">Produits</a></li>
-                        <li><a href="#" class="hover:text-white transition">Promotions</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-bold mb-3">Informations</h5>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Livraison</a></li>
-                        <li><a href="#" class="hover:text-white transition">Retours</a></li>
-                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-bold mb-3">Suivez-nous</h5>
-                    <div class="flex gap-3">
-                        <a href="#" class="bg-white/10 hover:bg-white/20 w-10 h-10 rounded-full flex items-center justify-center transition">📱</a>
-                        <a href="#" class="bg-white/10 hover:bg-white/20 w-10 h-10 rounded-full flex items-center justify-center transition">▶️</a>
-                        <a href="#" class="bg-white/10 hover:bg-white/20 w-10 h-10 rounded-full flex items-center justify-center transition">📷</a>
-                    </div>
-                </div>
-            </div>
-            <div class="pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
-                <p>En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.</p>
-                <p class="mt-2">© 2025 TechShop - Tous droits réservés</p>
-            </div>
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm text-gray-400">En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.</p>
+            <p class="mt-2 text-xs text-gray-500">© 2025 TechShop</p>
         </div>
     </footer>
 
     <script>
-        let currentFilter = 'all';
-
         function generateStars(rating) {
             const full = Math.floor(rating);
             const half = rating % 1 >= 0.5;
@@ -359,7 +205,7 @@
                 card.innerHTML = `
                     <div class="relative mb-4">
                         <div class="product-image rounded-xl overflow-hidden bg-gray-50 h-56 flex items-center justify-center">
-                            <img src="${produit.image}" alt="${produit.nom}" class="w-full h-full object-cover transition-transform duration-300">
+                            <img src="${produit.image}" alt="${produit.nom}" class="w-full h-full object-contain">
                         </div>
                         <div class="absolute top-3 left-3 badge-hot bg-gradient-to-r from-red-500 to-orange-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
                             ${produit.badge}
@@ -370,7 +216,7 @@
                     </div>
                     
                     <div class="mb-3">
-                        <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-2 hover:text-blue-600 transition">
+                        <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-2">
                             ${produit.nom}
                         </h3>
                     </div>
@@ -381,28 +227,16 @@
                         <span class="text-sm text-gray-400">(${produit.avis.toLocaleString()})</span>
                     </div>
 
-                    <div class="price-box rounded-xl p-3 mb-4">
+                    <div class="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-3 mb-4">
                         <div class="flex items-baseline gap-2 mb-1">
                             <span class="text-3xl font-black text-gray-900">${produit.prix}€</span>
                             <span class="text-gray-500 line-through text-sm">${produit.prixBarre}€</span>
-                        </div>
-                        <div class="text-xs text-gray-600">Prix le plus bas des 30 derniers jours</div>
-                    </div>
-
-                    <div class="space-y-2 mb-4 text-sm">
-                        <div class="flex items-center gap-2 text-green-700">
-                            <span>✓</span>
-                            <span class="font-semibold">${produit.stock}</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-blue-600">
-                            <span>🚚</span>
-                            <span>${produit.livraison}</span>
                         </div>
                     </div>
 
                     <a href="${produit.lienAffilie}" target="_blank" rel="noopener noreferrer" class="block">
                         <button class="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white py-3.5 rounded-xl font-bold text-lg transition shadow-lg hover:shadow-xl">
-                            Voir l'offre →
+                            Voir sur Amazon →
                         </button>
                     </a>
                 `;
@@ -412,7 +246,6 @@
         }
 
         function filterCategory(category) {
-            currentFilter = category;
             renderProducts(category);
         }
 
@@ -421,9 +254,5 @@
 
 </body>
 </html>
-
-
-
-
 
 
