@@ -3,154 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TurboInfo — Comparatifs High‑Tech, guides d'achat et sélections optimisées.">
-    <meta name="keywords" content="comparateur, high-tech, produits tech, audio, gaming, informatique, accessoires">
-    <meta name="author" content="TurboInfo">
-    <link rel="canonical" href="https://www.turboinfo.fr/">
-
-    <!-- ✅ Nouveau Favicon (utilise le logo) -->
-    <link rel="icon" type="image/png" href="https://favicon.io/emoji-favicons/high-voltage/">
-
-    <title>TurboInfo — Comparateur High‑Tech | Sélections & Meilleurs Prix</title>
-
+    <title>TurboInfo - Les meilleurs produits tech</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #f5f7fa, #e8eef3); }
+        body { font-family: 'Inter', sans-serif; background: #f5f7fa; }
 
-        .logo-container { display: flex; align-items: center; gap: 10px; }
-        .logo-icon { width: 42px; height: 42px; border-radius: 12px; background: #fbbf24; display: flex; justify-content: center; align-items: center; font-size: 24px; }
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid #e5e7eb;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border-color: #3b82f6;
+        }
 
-        .product-card { background: white; border-radius: 18px; border: 2px solid #e5e7eb; transition: .3s; overflow: hidden; }
-        .product-card:hover { transform: translateY(-6px); border-color: #3b82f6; box-shadow: 0 20px 30px rgba(0,0,0,0.08); }
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
 
-        .product-image img { transition: .35s; }
-        .product-card:hover .product-image img { transform: scale(1.08); }
+        .product-image img {
+            transition: transform 0.4s ease;
+        }
 
-        .filter-item { transition: .2s; border-radius: 8px; cursor: pointer; }
-        .filter-item:hover { background: #e5edff; padding-left: 8px; }
-        .filter-item.active { background: #3b82f6; color: white; font-weight: 600; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .badge-hot { animation: pulse 2s infinite; }
 
-        .header-gradient { background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899); background-size: 200% 200%; animation: grad 8s ease infinite; }
-        @keyframes grad { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+        .stars { color: #fbbf24; }
 
-        @media(max-width:768px){ .sidebar{display:none;} }
+        .filter-item:hover {
+            background: #f3f4f6;
+            padding-left: 12px;
+            transition: all 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeInUp 0.6s ease; }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+        }
     </style>
 </head>
 <body>
 
-<header class="header-gradient text-white sticky top-0 z-50 shadow-xl">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <div class="logo-container">
-            <div class="logo-icon" id="logo-display"></div>
-            <h1 class="text-2xl font-bold">Turbo<span class="text-yellow-300">Info</span></h1>
+    <!-- ============================================ -->
+    <!-- 🎯 TON ESPACE - MODIFIE JUSTE ICI -->
+    <!-- ============================================ -->
+    
+    <script>
+        const MES_PRODUITS = [
+            {
+                nom: "JBL GO 4, Enceinte Bluetooth ultra-portable",
+                prix: "38",
+                prixBarre: "49.99",
+                reduction: "-24%",
+                image: "https://m.media-amazon.com/images/I/81hdWRQnR5L._AC_SL1500_.jpg",
+                note: 4.8,
+                avis: 13799,
+                badge: "🔥 Choix d'Amazon",
+                lienAffilie: "https://amzn.to/3LnvSz8",
+                categorie: "Audio"
+            },
+            {
+                nom: "Imou 2K(3MP) Caméra Surveillance WiFi Intérieure Caméra 360°",
+                prix: "18.99",
+                prixBarre: "0",
+                image: "https://m.media-amazon.com/images/I/51WuJ7EZ1uL._AC_SL1500_.jpg",
+                note: 4.2,
+                avis: 38,
+                badge: "🔥Choix d'Amazon",
+                lienAffilie: "https://amzn.to/4oSQv4o",
+                categorie: "Accessoires"
+            },
+            {
+                nom: "Microphone sans Fil Professionnel pour iPhone, iPad, Android, Micro-Cravate ",
+                prix: "21.99",
+                prixBarre: "0",
+                image: "https://m.media-amazon.com/images/I/71BdjnZRW+L._AC_SL1500_.jpg",
+                note: 4.4,
+                avis: 46475,
+                badge: "🔥Choix d'Amazon",
+                lienAffilie: "https://amzn.to/4qQSZlC",
+                categorie: "Audio"
+            },
+            // Copie-colle ce bloc pour ajouter un produit :
+            /*
+            {
+                nom: "Nom du produit",
+                prix: "99",
+                prixBarre: "149.99",
+                reduction: "-33%",
+                image: "URL_IMAGE_AMAZON",
+                note: 4.5,
+                avis: 1234,
+                badge: "🔥 Top vente",
+                lienAffilie: "TON_LIEN_AFFILIE",
+                categorie: "Gaming"
+            },
+            */
+        ];
+    </script>
+
+    <!-- ============================================ -->
+    <!-- ⚠️ NE TOUCHE PAS EN DESSOUS -->
+    <!-- ============================================ -->
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white sticky top-0 z-50 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-3xl font-black">Turbo<span class="text-yellow-300">Info</span></h1>
+                <button class="relative">
+                    <span class="text-2xl"></span>
+                </button>
+            </div>
         </div>
-        <span id="total-products" class="bg-white/20 px-4 py-1 rounded-full text-sm font-semibold backdrop-blur">0 produit</span>
-    </div>
-</header>
+    </header>
 
-<main class="max-w-7xl mx-auto px-4 py-10 flex gap-6">
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
 
-    <!-- ✅ Sidebar Retouchée (pro sans pub) -->
-    <aside class="sidebar w-72 bg-white rounded-2xl p-6 shadow-xl h-fit border border-gray-200">
-        <h3 class="text-xl font-bold mb-5">🔍 Filtres</h3>
-        <div class="space-y-2 text-sm">
-            <div class="filter-item active py-3 px-4" onclick="filterCategory('all', this)">Toutes les catégories</div>
-            <div class="filter-item py-3 px-4" onclick="filterCategory('Gaming', this)">🎮 Gaming</div>
-            <div class="filter-item py-3 px-4" onclick="filterCategory('Audio', this)">🎵 Audio</div>
-            <div class="filter-item py-3 px-4" onclick="filterCategory('Informatique', this)">💻 Informatique</div>
-            <div class="filter-item py-3 px-4" onclick="filterCategory('Accessoires', this)">🔌 Accessoires</div>
-        </div>
-    </aside>
-
-    <!-- ✅ Zone Produits -->
-    <section class="flex-1">
-        <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-200 mb-6">
-            <h2 class="text-3xl font-black">🎯 Nos produits sélectionnés</h2>
-            <p class="text-gray-600"><span id="products-count">0</span> produits disponibles</p>
-        </div>
-
-        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    </section>
-</main>
-
-<footer class="bg-gray-900 text-white mt-16 py-10 text-center">
-    <p class="text-gray-300 mb-2">En tant que Partenaire Amazon, je gagne une commission sur les achats.</p>
-    <p class="text-gray-500 text-sm">© 2025 TurboInfo — Tous droits réservés</p>
-</footer>
-
-<script>
-    const MON_LOGO = "⚡";
-
-    document.getElementById("logo-display").textContent = MON_LOGO;
-
-    const MES_PRODUITS = [
-        {
-            nom: "JBL GO 4, Enceinte Bluetooth ultra‑portable",
-            prix: "38",
-            prixBarre: "49.99",
-            reduction: "-24%",
-            image: "https://m.media-amazon.com/images/I/81hdWRQnR5L._AC_SL1500_.jpg",
-            note: 4.8,
-            avis: 13799,
-            badge: "🔥 Choix d'Amazon",
-            lienAffilie: "https://amzn.to/3LnvSz8",
-            categorie: "Audio"
-        },
-        {
-            nom: "Imou 2K Caméra Surveillance WiFi 360°",
-            prix: "18.99",
-            prixBarre: "0",
-            image: "https://m.media-amazon.com/images/I/51WuJ7EZ1uL._AC_SL1500_.jpg",
-            note: 4.2,
-            avis: 38,
-            badge: "🔥 Choix d'Amazon",
-            lienAffilie: "https://amzn.to/4oSQv4o",
-            categorie: "Accessoires"
-        },
-        {
-            nom: "Micro sans fil Professionnel iPhone / Android",
-            prix: "21.99",
-            prixBarre: "0",
-            image: "https://m.media-amazon.com/images/I/71BdjnZRW+L._AC_SL1500_.jpg",
-            note: 4.4,
-            avis: 46475,
-            badge: "🔥 Choix d'Amazon",
-            lienAffilie: "https://amzn.to/4qQSZlC",
-            categorie: "Audio"
-        }
-    ];
-
-    function filterCategory(category, el){
-        document.querySelectorAll('.filter-item').forEach(i=>i.classList.remove('active'));
-        el.classList.add('active');
-        renderProducts(category);
-    }
-
-    function generateStars(rating){
-        return '★'.repeat(Math.floor(rating)) + '☆'.repeat(5 - Math.floor(rating));
-    }
-
-    function renderProducts(filter="all"){
-        const grid = document.getElementById("products-grid");
-        grid.innerHTML = "";
-
-        const filtered = filter === "all" ? MES_PRODUITS : MES_PRODUITS.filter(p=>p.categorie===filter);
-        document.getElementById("products-count").textContent = filtered.length;
-        document.getElementById("total-products").textContent = `${filtered.length} produits`;
-
-        filtered.forEach(p => {
-            const card = document.createElement("div");
-            card.className = "product-card p-5";
-
-            card.innerHTML = `
-                <div class="product-image h-64 mb-4 flex items-center justify-center bg-gray-50 rounded-xl">
-                    <img src="${p.image}" class="w-full h-full object-contain" />
+        <div class="flex gap-6">
+            
+            <!-- Sidebar Filters -->
+            <aside class="sidebar w-72 bg-white rounded-2xl p-6 h-fit sticky top-24 shadow-lg border-2 border-gray-100">
+                <h3 class="text-2xl font-black mb-6 text-gray-900">Filtres</h3>
+                
+                <div class="mb-6">
+                    <h4 class="font-bold text-gray-900 mb-3">📁 Catégories</h4>
+                    <div class="space-y-2 text-sm">
+                        <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition" onclick="filterCategory('all')">
+                            <label class="cursor-pointer">Toutes les catégories</label>
+                        </div>
+                        <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition" onclick="filterCategory('Gaming')">
+                            <label class="cursor-pointer">🎮 Gaming</label>
+                        </div>
+                        <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition" onclick="filterCategory('Audio')">
+                            <label class="cursor-pointer">🎵 Audio</label>
+                        </div>
+                        <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition" onclick="filterCategory('Informatique')">
+                            <label class="cursor-pointer">💻 Informatique</label>
+                        </div>
+                        <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition" onclick="filterCategory('Accessoires')">
+                            <label class="cursor-pointer">🔌 Accessoires</label>
+                        </div>
+                        <div class="filter-item cursor-pointer py-2 px-3 rounded-lg transition" onclick="filterCategory('Bureau')">
+                            <label class="cursor-pointer">🖥️ Bureau</label>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="font-bold text-lg mb-2">${p.nom}</h3>
-                <div class="flex items-center gap-2 text-yellow-500 mb-3">${generateStars(p.note)} <span class="text-gray-600 text-sm">(${p.avis} avis)</span></div>
-                <div class="mb-4">
-                    <span class="text-3xl font-black">${p.prix}€</span>
-                    ${p.prixBarre!="0" ? `<span class='line-through text-gray-500 ml-2'>${p.pr
+            </aside>
+
+            <!-- Products Grid -->
+            <div class="flex-1">
+                
+                <!-- Products Header -->
+                <div class="bg-white rounded-2xl p-6 mb-6 shadow-lg border-2 border-gray-100 fade-in">
+                    <div class="flex items-center justify-between flex-wrap gap-4">
+                        <div>
+                            <h2 class="text-3xl font-black text-gray-900 mb-2">Nos produits</h2>
+                            <p class="text-gray-600"><span id="products-count"></span> produits disponibles</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Products will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-16 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm text-gray-400">En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.</p>
+            <p class="mt-2 text-xs text-gray-500">© 2025 TechShop</p>
+        </div>
+    </footer>
+
+    <script>
+        function generateStars(rating) {
+            const full = Math.floor(rating);
+            const half = rating % 1 >= 0.5;
+            let stars = '★'.repeat(full);
+            if (half) stars += '⯨';
+            stars += '☆'.repeat(5 - full - (half ? 1 : 0));
+            return stars;
+        }
+
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+            
+            const filtered = filter === 'all' 
+                ? MES_PRODUITS 
+                : MES_PRODUITS.filter(p => p.categorie === filter);
+            
+            document.getElementById('products-count').textContent = filtered.length;
+            
+            filtered.forEach((produit, index) => {
+                const stars = generateStars(produit.note);
+                
+                const card = document.createElement('div');
+                card.className = 'product-card p-5 fade-in';
+                card.style.animationDelay = `${index * 0.05}s`;
+                
+                card.innerHTML = `
+                    <div class="relative mb-4">
+                        <div class="product-image rounded-xl overflow-hidden bg-gray-50 h-56 flex items-center justify-center">
+                            <img src="${produit.image}" alt="${produit.nom}" class="w-full h-full object-contain">
+                        </div>
+                        <div class="absolute top-3 left-3 badge-hot bg-gradient-to-r from-red-500 to-orange-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                            ${produit.badge}
+                        </div>
+                        <div class="absolute top-3 right-3 bg-red-600 text-white px-3 py-1.5 rounded-full text-sm font-black shadow-lg">
+                            ${produit.reduction}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-2">
+                            ${produit.nom}
+                        </h3>
+                    </div>
+
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="stars text-sm">${stars}</span>
+                        <span class="text-sm text-gray-600">${produit.note}</span>
+                        <span class="text-sm text-gray-400">(${produit.avis.toLocaleString()})</span>
+                    </div>
+
+                    <div class="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-3 mb-4">
+                        <div class="flex items-baseline gap-2 mb-1">
+                            <span class="text-3xl font-black text-gray-900">${produit.prix}€</span>
+                            <span class="text-gray-500 line-through text-sm">${produit.prixBarre}€</span>
+                        </div>
+                    </div>
+
+                    <a href="${produit.lienAffilie}" target="_blank" rel="noopener noreferrer" class="block">
+                        <button class="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white py-3.5 rounded-xl font-bold text-lg transition shadow-lg hover:shadow-xl">
+                            Voir sur Amazon →
+                        </button>
+                    </a>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCategory(category) {
+            renderProducts(category);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => renderProducts());
+    </script>
+
+</body>
+</html>
