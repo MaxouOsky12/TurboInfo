@@ -3,109 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Turbo Info : Découvrez les meilleurs haltères réglables pour la musculation à domicile. Avis, guide, exercices et comparatif.">
-<meta name="keywords" content="haltères réglables, musculation maison, Smart Click, exercices haltères, guide achat haltères">
-<title>Turbo Info - Les meilleurs haltères réglables</title>
+<meta name="description" content="Turbo Info : Découvrez les haltères BRAINGAIN 15-en-1 et 17-en-1 pour votre salle de sport à domicile. Avis, guide, exercices et conseils.">
+<meta name="keywords" content="haltères BRAINGAIN, haltères réglables, musculation maison, Smart Click, exercices haltères">
+<title>Turbo Info - BRAINGAIN Haltères Réglables</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    body { margin:0; font-family: 'Roboto', sans-serif; background:#f0f4f8; line-height:1.6; }
-    header { background: linear-gradient(135deg, #ff6f61, #ffb347); color:#fff; padding:50px 20px; text-align:center; position:relative; overflow:hidden; }
-    header h1 { font-size:3em; margin:0; animation: slideIn 1s ease forwards; }
-    header p { font-size:1.2em; margin-top:10px; animation: fadeIn 2s ease forwards; }
-    @keyframes slideIn { from { transform: translateY(-50px); opacity:0; } to { transform: translateY(0); opacity:1; } }
-    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-    .container { width:90%; max-width:1200px; margin:auto; padding:40px 0; }
+body {
+    margin:0;
+    font-family: 'Roboto', sans-serif;
+    background:#f0f4f8;
+    line-height:1.6;
+}
+header {
+    background: linear-gradient(135deg, #ff6f61, #ffb347);
+    color:#fff;
+    padding:60px 20px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+header h1 {
+    font-size:3em;
+    margin:0;
+    animation: slideIn 1s ease forwards;
+}
+header p {
+    font-size:1.3em;
+    margin-top:10px;
+    animation: fadeIn 2s ease forwards;
+}
+@keyframes slideIn { from { transform: translateY(-50px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
-    article { background:#fff; margin-bottom:50px; padding:30px; border-radius:15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
-    article:hover { transform: translateY(-5px); box-shadow:0 15px 30px rgba(0,0,0,0.15); }
+.container {
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:40px 0;
+}
 
-    article h2 { color:#ff6f61; margin-bottom:20px; }
-    article h3 { color:#333; margin-bottom:15px; }
-    article p, article ul { margin-bottom:15px; }
-    article ul { list-style-type: square; padding-left:20px; }
+article {
+    background:#fff;
+    margin-bottom:50px;
+    padding:30px;
+    border-radius:15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+article:hover {
+    transform: translateY(-5px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.15);
+}
+article h2 { color:#ff6f61; margin-bottom:20px; }
+article h3 { color:#333; margin-bottom:15px; }
+article p, article ul { margin-bottom:15px; }
+article ul { list-style-type: square; padding-left:20px; }
 
-    .buy-btn { display:inline-block; margin:15px 0; padding:15px 25px; background:linear-gradient(135deg, #ff6f61, #ffb347); color:#fff; font-size:1.1em; text-decoration:none; border-radius:8px; transition: transform 0.2s; }
-    .buy-btn:hover { transform: scale(1.05); }
+.flex-img {
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin:20px 0;
+}
+.flex-img img {
+    width:48%;
+    border-radius:10px;
+    transition: transform 0.3s;
+}
+.flex-img img:hover { transform: scale(1.05); }
 
-    footer { background:#222; color:#fff; text-align:center; padding:25px 0; margin-top:40px; border-top:5px solid #ff6f61; }
+.buy-btn {
+    display:inline-block;
+    margin:15px 0;
+    padding:15px 25px;
+    background:linear-gradient(135deg, #ff6f61, #ffb347);
+    color:#fff;
+    font-size:1.2em;
+    text-decoration:none;
+    border-radius:8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.buy-btn:hover {
+    transform: scale(1.05);
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
 
-    .flex-img { display:flex; gap:20px; flex-wrap:wrap; margin:20px 0; }
-    .flex-img img { width:48%; border-radius:10px; transition: transform 0.3s; }
-    .flex-img img:hover { transform: scale(1.05); }
+footer {
+    background:#222;
+    color:#fff;
+    text-align:center;
+    padding:25px 0;
+    margin-top:40px;
+    border-top:5px solid #ff6f61;
+}
+
+/* Animation pour les articles à l'apparition au scroll */
+@keyframes fadeUp {
+    from { opacity:0; transform: translateY(30px); }
+    to { opacity:1; transform: translateY(0); }
+}
+.article-animate { animation: fadeUp 1s ease forwards; opacity:0; }
+
 </style>
 </head>
 <body>
 
 <header>
     <h1>Turbo Info</h1>
-    <p>Les meilleurs haltères réglables pour votre salle de sport à domicile</p>
+    <p>Les haltères réglables BRAINGAIN pour votre salle de sport à domicile</p>
 </header>
 
 <div class="container">
 
-<!-- Article 1 : Introduction générale -->
-<article>
-    <h2>Pourquoi choisir des haltères réglables pour la musculation maison ?</h2>
-    <p>Les haltères réglables sont devenus incontournables pour ceux qui souhaitent s'entraîner à domicile. Ils offrent une polyvalence exceptionnelle, permettant de varier les charges sans avoir besoin d'acheter plusieurs ensembles de poids fixes.</p>
-    <p>Grâce à des mécanismes rapides comme le Smart Click ou le Dial, changer de poids prend quelques secondes seulement, ce qui rend vos séances plus fluides et efficaces.</p>
-    <p>De plus, ces ensembles sont généralement compacts, idéaux pour les petits appartements ou les espaces limités.</p>
+<!-- Article 1 -->
+<article class="article-animate">
+    <h2>Découverte des haltères BRAINGAIN 15-en-1 et 17-en-1</h2>
+    <p>Les haltères BRAINGAIN combinent praticité et efficacité pour la musculation à domicile. Avec deux versions disponibles (24 kg et 40 kg), ils permettent de progresser rapidement et de travailler tous les groupes musculaires.</p>
+    <p>La technologie Smart Click permet de changer le poids en quelques secondes, rendant l’entraînement fluide et efficace. Compactes et modulables, ces haltères sont parfaites pour les petits espaces.</p>
+    <div class="flex-img">
+        <img src="haltere1.jpg" alt="Haltère BRAINGAIN réglable 15-en-1 vue côté">
+        <img src="haltere2.jpg" alt="Haltère BRAINGAIN Smart Click 17-en-1">
+    </div>
+    <a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter sur Amazon</a>
 </article>
 
-<!-- Article 2 : Top 5 des haltères réglables -->
-<article>
-    <h2>Top 5 des haltères réglables à connaître</h2>
-    <ul>
-        <li>Haltères 15-en-1 : parfait pour débutants et confirmés, compact et facile à régler.</li>
-        <li>Haltères 17-en-1 : offre plus de combinaisons de poids, idéal pour la progression.</li>
-        <li>Haltères Smart Click : mécanisme rapide et sécurisé, adapté aux exercices intensifs.</li>
-        <li>Haltères à disque modulable : polyvalence maximale et prix abordable.</li>
-        <li>Haltères compacts pour appartement : gain de place, parfait pour petits espaces.</li>
-    </ul>
-    <p>Ces ensembles permettent de travailler tous les groupes musculaires sans encombrer votre espace.</p>
-</article>
-
-<!-- Article 3 : Exercices -->
-<article>
-    <h2>10 exercices essentiels avec des haltères réglables</h2>
+<!-- Article 2 -->
+<article class="article-animate">
+    <h2>Top 5 exercices avec les haltères BRAINGAIN</h2>
     <ul>
         <li>Développé couché pour les pectoraux</li>
         <li>Curl biceps</li>
         <li>Élévations latérales pour les épaules</li>
         <li>Squat avec haltères</li>
         <li>Rowing unilatéral pour le dos</li>
-        <li>Fentes avant</li>
-        <li>Extensions triceps</li>
-        <li>Deadlift jambes tendues</li>
-        <li>Oiseaux pour épaules arrière</li>
-        <li>Gainage avec haltères</li>
     </ul>
-    <p>Chaque exercice peut être adapté selon le poids disponible et votre niveau, ce qui rend ces haltères extrêmement polyvalents.</p>
+    <p>Ces exercices exploitent pleinement la polyvalence des haltères BRAINGAIN. Ajustez simplement le poids selon votre niveau grâce au système Smart Click.</p>
+    <a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter sur Amazon</a>
 </article>
 
-<!-- Article 4 : Guide d'achat -->
-<article>
-    <h2>Guide pour choisir ses haltères réglables</h2>
-    <p>Lorsque vous choisissez un ensemble, plusieurs critères sont importants :</p>
-    <h3>1. Le poids total disponible</h3>
-    <p>Débutants : 24 kg suffisent, Confirmés : 40 kg ou plus.</p>
-    <h3>2. Mécanisme de réglage</h3>
-    <p>Smart Click, Dial ou pin lock : choisissez celui qui est rapide et sûr pour vos exercices.</p>
-    <h3>3. Taille et rangement</h3>
-    <p>Compact et empilable, pour un gain de place maximal.</p>
-    <h3>4. Prix et durabilité</h3>
-    <p>Investissez dans un produit robuste qui durera plusieurs années.</p>
+<!-- Article 3 -->
+<article class="article-animate">
+    <h2>Guide d’achat : pourquoi choisir les haltères BRAINGAIN ?</h2>
+    <p>Lorsque vous choisissez vos haltères, plusieurs critères sont importants :</p>
+    <h3>Poids total</h3>
+    <p>Débutants → 24 kg ; Confirmés → 40 kg. Les BRAINGAIN offrent les deux options pour progresser facilement.</p>
+    <h3>Polyvalence</h3>
+    <p>Avec 15–17 réglages différents, vous pouvez réaliser une grande variété d’exercices sans acheter plusieurs ensembles.</p>
+    <h3>Compact et durable</h3>
+    <p>Ces haltères prennent peu de place et sont conçus pour durer plusieurs années, même avec un usage intensif.</p>
+    <a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter sur Amazon</a>
 </article>
 
-<!-- Article 5 : FAQ / conseils -->
-<article>
-    <h2>FAQ et conseils pour l'utilisation des haltères réglables</h2>
-    <h3>Comment progresser rapidement ?</h3>
-    <p>Augmentez le poids progressivement et variez vos exercices pour chaque groupe musculaire.</p>
-    <h3>Peut-on les utiliser dans un petit appartement ?</h3>
-    <p>Oui, les modèles compacts sont spécialement conçus pour limiter l’encombrement.</p>
-    <h3>Entretien et durabilité ?</h3>
-    <p>Essuyez les surfaces métalliques et rangez les haltères dans un endroit sec pour maximiser leur durée de vie.</p>
+<!-- Article 4 -->
+<article class="article-animate">
+    <h2>FAQ : Tout savoir sur les haltères BRAINGAIN</h2>
+    <h3>Comment les utiliser pour progresser ?</h3>
+    <p>Commencez avec un poids adapté, augmentez progressivement et variez vos exercices pour chaque groupe musculaire.</p>
+    <h3>Peuvent-ils être utilisés dans un petit appartement ?</h3>
+    <p>Oui, leur design compact permet de ranger facilement les haltères après chaque séance.</p>
+    <h3>Entretien et durabilité</h3>
+    <p>Essuyez régulièrement et rangez-les au sec pour maximiser leur durée de vie.</p>
+    <a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter sur Amazon</a>
+</article>
+
+<!-- Article 5 -->
+<article class="article-animate">
+    <h2>Pourquoi les haltères BRAINGAIN sont parfaits pour la maison</h2>
+    <p>Ces haltères combinent gain de place, flexibilité et sécurité. Avec la technologie Smart Click, vous passez rapidement d’un poids à un autre sans interrompre votre séance.</p>
+    <p>Idéal pour les débutants et confirmés, elles permettent de construire une routine complète et progressive directement chez soi.</p>
+    <a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter sur Amazon</a>
 </article>
 
 </div>
@@ -114,6 +181,19 @@
     <p>&copy; 2025 Turbo Info – Site indépendant | Affilié Amazon</p>
 </footer>
 
+<script>
+// Animation à l'apparition au scroll
+const articles = document.querySelectorAll('.article-animate');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.style.opacity = 1;
+            entry.target.style.animation = 'fadeUp 1s ease forwards';
+        }
+    });
+}, { threshold: 0.2 });
+articles.forEach(a => observer.observe(a));
+</script>
+
 </body>
 </html>
-
