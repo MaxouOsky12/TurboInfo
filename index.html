@@ -6,53 +6,42 @@
 <meta name="description" content="Turbo Info : Tout savoir sur les haltères réglables, exercices, routines, comparatifs et conseils pour musculation à domicile.">
 <meta name="keywords" content="haltère réglable, haltères réglables, haltère modulable, haltères modulables, musculation maison, exercices haltère réglable">
 <title>Turbo Info - Haltères réglables pour musculation maison</title>
-
-<!-- Structured data JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Turbo Info",
-  "url": "https://ton-site.com",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://ton-site.com/?s={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* BODY */
 body {
     margin:0;
     font-family:'Roboto',sans-serif;
     background:#f0f4f8;
     line-height:1.6;
     color:#333;
-    scroll-behavior:smooth;
 }
 
-/* HEADER */
+/* Header */
 header {
     background: linear-gradient(135deg, #ff6f61, #ffb347, #ff8c42, #ff6f61);
     background-size: 400% 400%;
     color: #fff;
-    padding: 80px 20px 120px 20px;
+    padding: 80px 20px;
     text-align: center;
     overflow: hidden;
     animation: gradientBG 15s ease infinite;
-    position: relative;
 }
 @keyframes gradientBG {
     0% {background-position:0% 50%;}
     50% {background-position:100% 50%;}
     100% {background-position:0% 50%;}
 }
-header h1 {font-size: 3.5em; font-weight:900; text-shadow: 2px 2px 12px rgba(0,0,0,0.2);}
-header p {font-size:1.5em; font-weight:500; margin-top:15px;}
+header h1 {
+    font-size: 3.5em;
+    font-weight: 900;
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.2);
+}
+header p {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: 15px;
+}
 .header-cta {
     display: inline-block;
     margin-top: 25px;
@@ -65,82 +54,52 @@ header p {font-size:1.5em; font-weight:500; margin-top:15px;}
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     transition: transform 0.3s, box-shadow 0.3s;
 }
-.header-cta:hover {transform: scale(1.05); box-shadow:0 12px 30px rgba(0,0,0,0.3);}
+.header-cta:hover {transform: scale(1.05); box-shadow: 0 12px 30px rgba(0,0,0,0.3);}
 
-/* NAVIGATION STICKY */
-nav {
-    position: sticky;
-    top:0;
-    background:#fff;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    z-index:1000;
+/* Container */
+.container {
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:40px 0;
 }
-nav ul {
-    display:flex;
-    justify-content:center;
-    list-style:none;
-    margin:0;
-    padding:15px 0;
-}
-nav ul li {
-    margin:0 20px;
-}
-nav ul li a {
-    text-decoration:none;
-    color:#ff6f61;
-    font-weight:bold;
-    font-size:1.1em;
-    transition: color 0.3s;
-}
-nav ul li a:hover {color:#ff8c42;}
 
-/* CONTAINER FLEX */
-.main-container {display:flex; flex-wrap:wrap; justify-content:space-between; width:90%; max-width:1300px; margin:auto; padding:40px 0; gap:30px;}
-
-/* ARTICLES */
+/* Articles */
 article {
-    background: linear-gradient(145deg, #ffffff, #f9faff);
-    padding: 40px 30px;
+    background: linear-gradient(145deg, #ffffff, #f9fafc);
+    margin-bottom: 50px;
+    padding: 45px 35px;
     border-radius: 25px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.15);
-    flex:1 1 65%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
     opacity:0;
     animation:fadeUp 1s ease forwards;
 }
-article:hover {transform: translateY(-8px); box-shadow:0 25px 50px rgba(0,0,0,0.2); background:linear-gradient(145deg,#fff,#f3f6f9);}
-article h2 {color:#ff6f61; font-size:2.5em; margin-bottom:20px; text-shadow:1px 1px 3px rgba(0,0,0,0.1);}
-article h3 {color:#222; font-size:1.6em; margin-bottom:15px;}
-article p, article ul {font-size:1.1em; line-height:1.8; margin-bottom:18px;}
+article:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    background: linear-gradient(145deg, #ffffff, #f3f6f9);
+}
+article h2 {
+    font-size: 2.4em;
+    margin-bottom: 25px;
+    color: #ff6f61;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+article h3 {color: #222; font-size: 1.6em; margin-bottom: 20px;}
+article p, article ul {font-size: 1.1em; line-height:1.8; margin-bottom:18px;}
 article ul {list-style-type:square; padding-left:25px;}
 
-/* SIDEBAR */
-.sidebar {
-    flex:1 1 28%;
-    background:#fff;
-    border-radius:20px;
-    padding:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    position:sticky;
-    top:120px;
-    height:max-content;
-}
-.sidebar h3 {color:#ff6f61; margin-bottom:15px; text-align:center;}
-.sidebar ul {list-style:none; padding:0;}
-.sidebar ul li {margin:10px 0;}
-.sidebar ul li a {text-decoration:none; color:#333; transition:color 0.3s;}
-.sidebar ul li a:hover {color:#ff6f61; font-weight:bold;}
-
-/* FLEX IMAGES */
-.flex-img {display:flex; gap:20px; flex-wrap:wrap; margin:20px 0;}
+/* Images flex */
+.flex-img {display:flex; gap:20px; flex-wrap:wrap; margin:25px 0;}
 .flex-img img {width:48%; border-radius:15px; transition: transform 0.3s;}
 .flex-img img:hover {transform: scale(1.05);}
 
-/* BUTTONS */
+/* Boutons */
 .buy-btn {
     display:inline-block;
-    margin:15px 0;
-    padding:15px 35px;
+    margin:20px 0;
+    padding:18px 35px;
     background: linear-gradient(135deg,#ff6f61,#ffb347,#ff8c42);
     color:#fff;
     font-size:1.25em;
@@ -150,27 +109,12 @@ article ul {list-style-type:square; padding-left:25px;}
     box-shadow:0 10px 25px rgba(0,0,0,0.25);
     transition: transform 0.3s, box-shadow 0.3s;
 }
-.buy-btn:hover {transform: scale(1.08); box-shadow:0 15px 40px rgba(0,0,0,0.3);}
-
-/* FLOATING CTA */
-.floating-buy {
-    position:fixed;
-    bottom:30px;
-    right:30px;
-    background: linear-gradient(135deg,#ff6f61,#ffb347,#ff8c42);
-    color:#fff;
-    font-weight:bold;
-    padding:18px 30px;
-    border-radius:50px;
+.buy-btn:hover {
+    transform: scale(1.08);
     box-shadow:0 15px 40px rgba(0,0,0,0.3);
-    text-decoration:none;
-    z-index:1000;
-    font-size:1.2em;
-    transition:transform 0.3s, box-shadow 0.3s;
 }
-.floating-buy:hover {transform: scale(1.05); box-shadow:0 20px 50px rgba(0,0,0,0.35);}
 
-/* FOOTER */
+/* Footer */
 footer {
     background: linear-gradient(135deg,#ff6f61,#ffb347);
     color:#fff;
@@ -180,12 +124,16 @@ footer {
     border-top:5px solid #fff;
 }
 
-/* ANIMATIONS */
+/* Animations */
 @keyframes fadeUp {from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);}}
 
-/* RESPONSIVE */
-@media(max-width:992px){.main-container{flex-direction:column;}.sidebar{position:relative;top:0;flex:1 1 100%;}}
-@media(max-width:768px){header h1{font-size:2.8em;} header p{font-size:1.2em;} article{padding:30px 20px;}}
+/* Responsive */
+@media(max-width:768px){
+    header h1 {font-size:2.8em;}
+    header p {font-size:1.2em;}
+    article {padding:35px 20px;}
+    .flex-img img {width:100%;}
+}
 </style>
 </head>
 <body>
@@ -196,98 +144,136 @@ footer {
 <a href="#articles" class="header-cta">Découvrir les articles</a>
 </header>
 
-<nav>
-<ul>
-<li><a href="#article1">Guide</a></li>
-<li><a href="#article2">Exercices</a></li>
-<li><a href="#article3">Comparatif</a></li>
-<li><a href="#article4">Erreurs</a></li>
-<li><a href="#article5">Routine 4 semaines</a></li>
-</ul>
-</nav>
-
-<div class="main-container">
-<div class="articles">
+<div class="container" id="articles">
 
 <!-- ARTICLE 1 -->
-<article class="article-animate" id="article1">
+<article class="article-animate">
 <h2>Guide complet sur l'haltère réglable</h2>
-<p>Les haltères réglables sont devenus l’équipement incontournable pour la musculation à domicile...</p>
+<p>Les haltères réglables sont devenus l’équipement incontournable pour la musculation à domicile. Grâce à leur design modulable, ils remplacent plusieurs paires d’haltères fixes et permettent un entraînement complet. Que vous soyez débutant ou avancé, un haltère réglable vous aide à progresser efficacement.</p>
 <h3>Pourquoi choisir un haltère réglable</h3>
 <ul>
-<li>Gain de place</li>
-<li>Économie</li>
-<li>Polyvalence</li>
-<li>Progression facile</li>
-<li>Sécurité</li>
+<li><strong>Gain de place :</strong> un seul ensemble remplace plusieurs poids fixes.</li>
+<li><strong>Économie :</strong> investissement unique pour plusieurs exercices.</li>
+<li><strong>Polyvalence :</strong> permet de travailler pectoraux, bras, jambes, dos et épaules.</li>
+<li><strong>Progression facile :</strong> ajustez le poids selon vos objectifs.</li>
+<li><strong>Sécurité :</strong> mécanisme de verrouillage solide et poignée ergonomique.</li>
 </ul>
-<h3>Comment choisir</h3>
+<h3>Comment choisir son haltère réglable</h3>
 <ul>
-<li>Poids max</li>
-<li>Mécanisme rapide</li>
-<li>Matériaux qualitatifs</li>
-<li>Rangement compact</li>
+<li>Poids maximum disponible (24 kg pour débutants, 40 kg pour avancés)</li>
+<li>Mécanisme d’ajustement rapide (Smart Click recommandé)</li>
+<li>Matériaux de qualité et revêtement anti-dérapant</li>
+<li>Rangement compact et gain de place</li>
 </ul>
 <h3>FAQ</h3>
 <ul>
-<li>Débutants : poids 24kg suffisant</li>
-<li>Entretien régulier</li>
-<li>Progression progressive</li>
-<li>Respect technique</li>
+<li>Débutants : un modèle de 24 kg suffit pour commencer.</li>
+<li>Entretien : essuyez après chaque utilisation et rangez au sec.</li>
+<li>Progression : augmentez les poids progressivement toutes les 2-3 semaines.</li>
+<li>Technique : respectez les mouvements pour éviter les blessures.</li>
 </ul>
-<a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter un haltère réglable</a>
+<a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter un haltère réglable sur Amazon</a>
 </article>
 
 <!-- ARTICLE 2 -->
-<article class="article-animate" id="article2">
+<article class="article-animate">
 <h2>Exercices et routines avec un haltère réglable</h2>
-<!-- contenu existant -->
-<a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter un haltère réglable</a>
+<h3>Exercices pour le haut du corps</h3>
+<ul>
+<li>Développé couché avec haltère réglable</li>
+<li>Curl biceps unilatéral</li>
+<li>Élévations latérales et frontales pour épaules</li>
+<li>Rowing unilatéral pour le dos</li>
+<li>Extensions triceps au-dessus de la tête</li>
+</ul>
+<h3>Exercices pour le bas du corps</h3>
+<ul>
+<li>Squat goblet</li>
+<li>Fentes avant avec rotation du tronc</li>
+<li>Soulevé de terre jambes tendues</li>
+<li>Extensions mollets</li>
+<li>Hip thrust avec haltère réglable</li>
+</ul>
+<h3>Routine hebdomadaire</h3>
+<p>Débutants : 3 séances/semaine, 1h chacune. Intermédiaires : 4 séances/semaine. Avancés : 5 séances, supersets et full body.</p>
+<h3>Conseils pour progression</h3>
+<ul>
+<li>Augmentez progressivement le poids tous les 7-14 jours</li>
+<li>Variez les exercices</li>
+<li>Respectez les temps de repos (60-90s)</li>
+<li>Posture correcte pour éviter blessures</li>
+</ul>
+<a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter un haltère réglable sur Amazon</a>
 </article>
 
 <!-- ARTICLE 3 -->
-<article class="article-animate" id="article3">
+<article class="article-animate">
 <h2>Comparatif des meilleurs haltères modulables</h2>
-<!-- contenu existant -->
-<a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter un haltère réglable</a>
+<h3>Haltère réglable classique</h3>
+<p>Prix abordable, facile à trouver, mais le changement de poids est lent.</p>
+<h3>Haltère Smart Click</h3>
+<p>Mécanisme rapide, solide, idéal pour routines intenses.</p>
+<h3>Haltères haut de gamme modulables</h3>
+<p>Design compact, matériaux premium, prix élevé, parfait pour passionnés.</p>
+<h3>Comment choisir</h3>
+<ul>
+<li>Déterminez votre budget</li>
+<li>Considérez l’espace disponible</li>
+<li>Choisissez mécanisme rapide pour séances efficaces</li>
+<li>Vérifiez poids maximal et confort poignée</li>
+</ul>
+<a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter un haltère réglable sur Amazon</a>
 </article>
 
 <!-- ARTICLE 4 -->
-<article class="article-animate" id="article4">
+<article class="article-animate">
 <h2>Erreurs fréquentes avec les haltères réglables</h2>
-<!-- contenu existant -->
-<a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter un haltère réglable</a>
+<ul>
+<li>Utiliser un poids trop lourd dès le début</li>
+<li>Mauvaise technique</li>
+<li>Ne pas respecter le repos</li>
+<li>Se concentrer uniquement sur certains muscles</li>
+<li>Oublier de varier les exercices</li>
+</ul>
+<h3>Conseils pour progresser</h3>
+<ul>
+<li>Commencez avec poids léger</li>
+<li>Augmentez progressivement</li>
+<li>Variez les exercices</li>
+<li>Suivez routine structurée</li>
+<li>Hydratez-vous et récupérez bien</li>
+</ul>
+<a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter un haltère réglable sur Amazon</a>
 </article>
 
 <!-- ARTICLE 5 -->
-<article class="article-animate" id="article5">
+<article class="article-animate">
 <h2>Routine complète 4 semaines avec haltères réglables</h2>
-<!-- contenu existant -->
-<a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter un haltère réglable</a>
+<h3>Semaine 1-2 : Adaptation</h3>
+<ul>
+<li>Apprentissage mouvements de base</li>
+<li>Poids légers</li>
+<li>3 séances/semaine, 60 min</li>
+<li>Focus pectoraux, bras, jambes, dos, épaules</li>
+</ul>
+<h3>Semaine 3 : Progression</h3>
+<ul>
+<li>Augmenter poids progressivement</li>
+<li>4 séances/semaine</li>
+<li>Introduction supersets</li>
+<li>Combinaison haut/bas du corps</li>
+</ul>
+<h3>Semaine 4 : Intensité</h3>
+<ul>
+<li>5 séances/semaine, incluant cardio et renforcement</li>
+<li>Variation exercices</li>
+<li>Suivi performances et ajustement poids</li>
+<li>Évaluation progrès et objectifs</li>
+</ul>
+<a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank">Acheter un haltère réglable sur Amazon</a>
 </article>
 
 </div>
-
-<!-- SIDEBAR -->
-<div class="sidebar">
-<h3>Articles populaires</h3>
-<ul>
-<li><a href="#article1">Guide complet</a></li>
-<li><a href="#article2">Exercices</a></li>
-<li><a href="#article3">Comparatif</a></li>
-<li><a href="#article4">Erreurs fréquentes</a></li>
-<li><a href="#article5">Routine 4 semaines</a></li>
-</ul>
-<h3>Produits affiliés</h3>
-<ul>
-<li><a href="VOTRE-LIEN-AMAZON" target="_blank">BRAINGAIN Haltère 40kg</a></li>
-<li><a href="VOTRE-LIEN-AMAZON" target="_blank">KIT Haltère modulable 24kg</a></li>
-<li><a href="VOTRE-LIEN-AMAZON" target="_blank">Haltères réglables Smart Click</a></li>
-</ul>
-</div>
-</div>
-
-<a href="VOTRE-LIEN-AMAZON" class="floating-buy" target="_blank">Acheter maintenant</a>
 
 <footer>
 <p>&copy; 2025 Turbo Info – Site indépendant | Affilié Amazon</p>
@@ -297,15 +283,16 @@ footer {
 // Animation scroll
 const articles = document.querySelectorAll('.article-animate');
 const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-    if(entry.isIntersecting){
-        entry.target.style.opacity = 1;
-        entry.target.style.animation = 'fadeUp 1s ease forwards';
-    }
-});
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.style.opacity = 1;
+            entry.target.style.animation = 'fadeUp 1s ease forwards';
+        }
+    });
 }, { threshold: 0.2 });
 articles.forEach(a => observer.observe(a));
 </script>
 
 </body>
 </html>
+
