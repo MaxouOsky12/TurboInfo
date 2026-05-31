@@ -1,595 +1,485 @@
+
+Demandez à Meta AI…
+
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MinuteBrief | L'essentiel en 60s</title>
-    <style>
-        /* =========================================================
-           VARIABLES & RESET
-           ========================================================= */
-        :root {
-            --bg-color: #ffffff;
-            --text-main: #111111;
-            --text-muted: #666666;
-            --card-bg: #f9f9f9;
-            --border-color: #eeeeee;
-            --accent-color: #000000;
-            --badge-bg: #e0e0e0;
-            --skeleton-bg: #e2e5e7;
-            --skeleton-shine: #f6f7f8;
-            
-            /* Importance colors */
-            --imp-haute: #ffebee;
-            --imp-haute-text: #c62828;
-            --imp-moyenne: #fff3e0;
-            --imp-moyenne-text: #ef6c00;
-            --imp-faible: #e8f5e9;
-            --imp-faible-text: #2e7d32;
-
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        /* Dark Mode variables */
-        body.dark-mode {
-            --bg-color: #121212;
-            --text-main: #f5f5f5;
-            --text-muted: #aaaaaa;
-            --card-bg: #1e1e1e;
-            --border-color: #333333;
-            --accent-color: #ffffff;
-            --badge-bg: #333333;
-            --skeleton-bg: #2a2a2a;
-            --skeleton-shine: #3a3a3a;
-            
-            --imp-haute: #4a1c1c;
-            --imp-haute-text: #ff8a80;
-            --imp-moyenne: #4d2c10;
-            --imp-moyenne-text: #ffd180;
-            --imp-faible: #1b3a1e;
-            --imp-faible-text: #b9f6ca;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.5;
-            transition: background-color 0.3s, color 0.3s;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* =========================================================
-           LAYOUT & HEADER
-           ========================================================= */
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        button {
-            background: var(--card-bg);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        button:hover {
-            border-color: var(--text-muted);
-        }
-
-        button.active {
-            background: var(--text-main);
-            color: var(--bg-color);
-        }
-
-        .filters {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            background: var(--card-bg);
-            color: var(--text-main);
-            font-size: 1rem;
-        }
-
-        .filter-row {
-            display: flex;
-            gap: 10px;
-        }
-
-        /* =========================================================
-           CARDS (BRIEFS)
-           ========================================================= */
-        #feed {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            transition: transform 0.2s;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            font-size: 0.85rem;
-        }
-
-        .badges {
-            display: flex;
-            gap: 8px;
-        }
-
-        .badge {
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            background: var(--badge-bg);
-            color: var(--text-main);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
-        }
-
-        .badge.haute { background: var(--imp-haute); color: var(--imp-haute-text); }
-        .badge.moyenne { background: var(--imp-moyenne); color: var(--imp-moyenne-text); }
-        .badge.faible { background: var(--imp-faible); color: var(--imp-faible-text); }
-
-        .date {
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .tldr {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            border-left: 3px solid var(--text-muted);
-            padding-left: 10px;
-        }
-
-        .details {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .points {
-            list-style-type: none;
-            margin-bottom: 15px;
-        }
-
-        .points li {
-            position: relative;
-            padding-left: 15px;
-            margin-bottom: 8px;
-            color: var(--text-main);
-        }
-
-        .points li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--text-muted);
-            font-weight: bold;
-        }
-
-        .why-it-matters {
-            background: var(--bg-color);
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .why-label {
-            font-weight: 700;
-            display: block;
-            margin-bottom: 4px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        /* 10 Seconds Mode Toggle */
-        body.mode-10s .details {
-            display: none;
-        }
-
-        /* =========================================================
-           SKELETON LOADING
-           ========================================================= */
-        .skeleton {
-            background: var(--skeleton-bg);
-            background-image: linear-gradient(
-                90deg, 
-                var(--skeleton-bg) 0px, 
-                var(--skeleton-shine) 40px, 
-                var(--skeleton-bg) 80px
-            );
-            background-size: 200% 100%;
-            animation: shine 1.5s infinite ease-out;
-            border-radius: 4px;
-        }
-
-        .sk-card { height: 200px; border-radius: 12px; margin-bottom: 20px; }
-
-        @keyframes shine {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        .error-msg {
-            text-align: center;
-            color: var(--imp-haute-text);
-            padding: 20px;
-            background: var(--imp-haute);
-            border-radius: 8px;
-        }
-
-        /* Responsive */
-        @media (max-width: 480px) {
-            h1 { font-size: 1.5rem; }
-            .filter-row { flex-direction: column; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MinuteBrief — The news in 60 seconds</title>
+<meta name="description" content="Minimal, fast news briefs. No tracking, no clutter.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-secondary: #f5f5f7;
+    --text: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --border: #e5e5ea;
+    --card: #ffffff;
+    --accent: #0071e3;
+    --green-bg: #e6f4ea;
+    --green-text: #0d652d;
+    --orange-bg: #fff1d6;
+    --orange-text: #8a4b00;
+    --red-bg: #ffe5e3;
+    --red-text: #b10e0e;
+    --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  }
+  html[data-theme="dark"] {
+    --bg: #000000;
+    --bg-secondary: #111113;
+    --text: #f5f5f7;
+    --text-secondary: #98989d;
+    --border: #262628;
+    --card: #1c1c1e;
+    --accent: #0a84ff;
+    --green-bg: #0e2a18;
+    --green-text: #7de2a5;
+    --orange-bg: #2a1c0e;
+    --orange-text: #ffb057;
+    --red-bg: #2a0e0e;
+    --red-text: #ff7b72;
+    --shadow: none;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  header {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding: 14px 0;
+  }
+  .brand { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+  .logo {
+    width: 24px; height: 24px; border-radius: 6px;
+    background: var(--text); color: var(--bg);
+    display: grid; place-items: center; font-weight: 700; font-size: 14px;
+    flex: 0 0 auto;
+  }
+  html[data-theme="dark"] .logo { background: var(--text); color: #000; }
+  h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.015em; margin: 0; white-space: nowrap; }
+  .tag { font-size: 13px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .actions { display: flex; gap: 8px; }
+  button, select {
+    font: inherit; color: var(--text);
+  }
+  .btn {
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 8px 12px; border-radius: 20px;
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: transform .05s ease;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .controls {
+    display: grid; gap: 8px; padding: 16px 0 8px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .controls { grid-template-columns: 1fr 180px 160px; align-items: center; }
+  }
+  .field {
+    position: relative;
+  }
+  input[type="search"], select {
+    width: 100%; padding: 10px 12px; padding-left: 34px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border); border-radius: 10px;
+    font-size: 15px; outline: none;
+  }
+  select { padding-left: 12px; }
+  input[type="search"]:focus, select:focus {
+    border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+  /* fallback for no color-mix support */
+  @supports not (color: color-mix(in srgb, red, blue)) {
+    input[type="search"]:focus, select:focus { box-shadow: 0 0 0 3px rgba(0,113,227,0.2); }
+  }
+  .field svg {
+    position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+    width: 18px; height: 18px; color: var(--text-secondary); pointer-events: none;
+  }
+  .grid {
+    display: grid; gap: 16px; padding: 8px 0 32px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1080px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 16px;
+    display: flex; flex-direction: column; gap: 10px;
+    box-shadow: var(--shadow);
+  }
+  .card-meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge {
+    font-size: 11.5px; font-weight: 600; letter-spacing: .01em;
+    padding: 4px 8px; border-radius: 999px;
+    background: var(--bg-secondary); color: var(--text-secondary);
+    text-transform: capitalize; border: 1px solid var(--border);
+  }
+  .badge.cat { background: transparent; }
+  .badge.imp.low { background: var(--green-bg); color: var(--green-text); border-color: transparent; }
+  .badge.imp.medium { background: var(--orange-bg); color: var(--orange-text); border-color: transparent; }
+  .badge.imp.high { background: var(--red-bg); color: var(--red-text); border-color: transparent; }
+  time.date { font-size: 12px; color: var(--text-secondary); white-space: nowrap; }
+  .title { font-size: 18px; line-height: 1.3; font-weight: 650; letter-spacing: -0.01em; margin: 2px 0 0; }
+  .tldr { font-size: 14.5px; color: var(--text); margin: 0; }
+  .card-points { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 6px; }
+  .card-points li { font-size: 14px; color: var(--text-secondary); }
+  .card-why { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 10px; }
+  .card-why strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-secondary); margin-bottom: 4px; }
+  .card-why p { margin: 0; font-size: 14px; }
+  body.ten-second .card-points, body.ten-second .card-why { display: none; }
+  .skeleton { pointer-events: none; }
+  .sk {
+    background: var(--bg-secondary); border-radius: 8px;
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+  .sk-badge { width: 56px; height: 20px; border-radius: 999px; }
+  .sk-date { width: 70px; height: 14px; }
+  .sk-line { height: 14px; margin-top: 8px; }
+  .sk-line:first-of-type { height: 20px; width: 80%; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.55} }
+  #empty { text-align: center; color: var(--text-secondary); padding: 40px 0; }
+  footer { border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 12.5px; padding: 20px 0 40px; text-align: center; }
+  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+</style>
 </head>
 <body>
+<header>
+  <div class="wrap head">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">M</div>
+      <h1>MinuteBrief</h1>
+      <span class="tag">The news in 60 seconds</span>
+    </div>
+    <div class="actions">
+      <button id="tenToggle" class="btn" aria-pressed="false" title="Toggle 10-second mode">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        10s
+      </button>
+      <button id="themeToggle" class="btn" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <span class="sr-only">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
 
-<div class="container">
-    <header>
-        <div class="header-top">
-            <h1>MinuteBrief</h1>
-            <div class="controls">
-                <button id="btn-10s" title="Mode 10 secondes (TL;DR uniquement)">⚡ 10s</button>
-                <button id="btn-dark" title="Mode Sombre">🌙</button>
-            </div>
-        </div>
-        <div class="filters">
-            <input type="text" id="search-input" placeholder="Rechercher un sujet..." autocomplete="off">
-            <div class="filter-row">
-                <select id="filter-category">
-                    <option value="">Toutes les catégories</option>
-                </select>
-                <select id="filter-importance">
-                    <option value="">Toutes les importances</option>
-                    <option value="haute">Haute</option>
-                    <option value="moyenne">Moyenne</option>
-                    <option value="faible">Faible</option>
-                </select>
-            </div>
-        </div>
-    </header>
-
-    <main id="feed">
-        <div class="skeleton sk-card"></div>
-        <div class="skeleton sk-card"></div>
-        <div class="skeleton sk-card"></div>
-    </main>
+<div class="wrap controls">
+  <div class="field">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input id="search" type="search" placeholder="Search briefs…" autocomplete="off">
+  </div>
+  <select id="categoryFilter" aria-label="Filter by category">
+    <option value="">All categories</option>
+  </select>
+  <select id="importanceFilter" aria-label="Filter by importance">
+    <option value="">All importance</option>
+    <option value="high">High</option>
+    <option value="medium">Medium</option>
+    <option value="low">Low</option>
+  </select>
 </div>
 
+<main class="wrap">
+  <div id="grid" class="grid" aria-live="polite"></div>
+  <p id="empty" hidden>No briefs match your filters.</p>
+</main>
+
+<footer class="wrap">
+  <span id="updated">Loading…</span> · MinuteBrief — minimal, cached 5 min, no tracking.
+</footer>
+
 <script>
-    /* =========================================================
-       CONFIGURATION & VARIABLES
-       ========================================================= */
-    // ⚠️ REMPLACE CECI PAR L'ID DE TON GOOGLE SHEET
-    const SHEET_ID = "1WClO1q9YZlN-VlhMNzvwbVoRQYWvR78fAcc_-AyIkIo"; 
-    
-    const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`;
-    let briefsData = [];
-    let categories = new Set();
+  // ===== CONFIG =====
+  const SHEET_ID = '1WClO1q9YZlN-VlhMNzvwbVoRQYWvR78fAcc_-AyIkIo'; // <-- replace with your public Google Sheet ID
+  const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`;
+  const CACHE_KEY = 'mb_cache_v1';
+  const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
-    // DOM Elements
-    const feedEl = document.getElementById('feed');
-    const searchInput = document.getElementById('search-input');
-    const filterCat = document.getElementById('filter-category');
-    const filterImp = document.getElementById('filter-importance');
-    const btn10s = document.getElementById('btn-10s');
-    const btnDark = document.getElementById('btn-dark');
+  // ===== ELEMENTS =====
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  const searchInput = document.getElementById('search');
+  const categoryFilter = document.getElementById('categoryFilter');
+  const importanceFilter = document.getElementById('importanceFilter');
+  const tenToggle = document.getElementById('tenToggle');
+  const themeToggle = document.getElementById('themeToggle');
+  const updatedEl = document.getElementById('updated');
 
-    /* =========================================================
-       SÉCURITÉ & SANITIZATION
-       ========================================================= */
-    // Supprime toute forme d'URL pour empêcher le phishing ou l'injection
-    function sanitizeText(str) {
-        if (!str) return "";
-        // Regex stricte pour attraper http, https, www, et les TLDs courants
-        const urlRegex = /((https?:\/\/)|(www\.))[^\s]+|[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,}(\/[^\s]*)?/gi;
-        return str.replace(urlRegex, '[Lien masqué]');
+  let allData = [];
+
+  // ===== THEME =====
+  const storedTheme = localStorage.getItem('mb_theme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+  document.documentElement.dataset.theme = initialTheme;
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('mb_theme', next);
+  });
+
+  // ===== 10-SECOND MODE =====
+  const tenStored = localStorage.getItem('mb_ten') === '1';
+  if (tenStored) document.body.classList.add('ten-second');
+  tenToggle.setAttribute('aria-pressed', tenStored ? 'true' : 'false');
+  tenToggle.addEventListener('click', () => {
+    const on = document.body.classList.toggle('ten-second');
+    tenToggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+    localStorage.setItem('mb_ten', on ? '1' : '0');
+  });
+
+  // ===== HELPERS =====
+  const stripUrls = s => (s || '').replace(/https?:\/\/\S+/gi, '').replace(/www\.\S+/gi, '').trim();
+  const safe = s => stripUrls(s);
+
+  function formatDate(d) {
+    if (!d) return '';
+    const dt = new Date(d);
+    if (isNaN(dt)) return safe(d);
+    return dt.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function parseCSV(text) {
+    const rows = []; let cur = '', row = [], inQ = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i], n = text[i+1];
+      if (c === '"') {
+        if (inQ && n === '"') { cur += '"'; i++; }
+        else inQ = !inQ;
+      } else if (c === ',' && !inQ) { row.push(cur); cur = ''; }
+      else if ((c === '\n' || c === '\r') && !inQ) {
+        if (c === '\r' && n === '\n') i++;
+        row.push(cur); rows.push(row); row = []; cur = '';
+      } else { cur += c; }
+    }
+    if (cur !== '' || row.length) { row.push(cur); rows.push(row); }
+    if (!rows.length) return [];
+    const headers = rows.shift().map(h => h.trim().toLowerCase().replace(/\s+/g, '_'));
+    return rows.filter(r => r.some(v => v.trim() !== '')).map(r => {
+      const o = {};
+      headers.forEach((h, i) => o[h] = (r[i] || '').trim());
+      return o;
+    });
+  }
+
+  // ===== SKELETON =====
+  function showSkeleton() {
+    grid.innerHTML = '';
+    for (let i = 0; i < 6; i++) {
+      const card = document.createElement('article');
+      card.className = 'card skeleton';
+      const meta = document.createElement('div');
+      meta.className = 'card-meta';
+      const badges = document.createElement('div');
+      badges.className = 'badges';
+      const b1 = document.createElement('span'); b1.className = 'sk sk-badge';
+      const b2 = document.createElement('span'); b2.className = 'sk sk-badge';
+      badges.append(b1, b2);
+      const d = document.createElement('span'); d.className = 'sk sk-date';
+      meta.append(badges, d);
+      card.append(meta);
+      const l1 = document.createElement('div'); l1.className = 'sk sk-line';
+      const l2 = document.createElement('div'); l2.className = 'sk sk-line'; l2.style.width = '95%';
+      const l3 = document.createElement('div'); l3.className = 'sk sk-line'; l3.style.width = '80%';
+      card.append(l1, l2, l3);
+      grid.append(card);
+    }
+  }
+
+  // ===== RENDER =====
+  function createCard(item) {
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.dataset.category = item.category || '';
+    card.dataset.importance = (item.importance || '').toLowerCase();
+
+    const meta = document.createElement('div');
+    meta.className = 'card-meta';
+    const badges = document.createElement('div');
+    badges.className = 'badges';
+
+    if (item.category) {
+      const cat = document.createElement('span');
+      cat.className = 'badge cat';
+      cat.textContent = safe(item.category);
+      badges.appendChild(cat);
+    }
+    if (item.importance) {
+      const imp = document.createElement('span');
+      const level = item.importance.toLowerCase();
+      imp.className = 'badge imp ' + (['low','medium','high'].includes(level) ? level : 'medium');
+      imp.textContent = safe(item.importance);
+      badges.appendChild(imp);
+    }
+    const date = document.createElement('time');
+    date.className = 'date';
+    date.textContent = formatDate(item.date);
+    if (item.date) date.dateTime = item.date;
+    meta.append(badges, date);
+    card.append(meta);
+
+    const title = document.createElement('h2');
+    title.className = 'title';
+    title.textContent = safe(item.title);
+    card.append(title);
+
+    if (item.tldr) {
+      const tldr = document.createElement('p');
+      tldr.className = 'tldr';
+      tldr.textContent = safe(item.tldr);
+      card.append(tldr);
     }
 
-    // Crée un élément DOM en utilisant uniquement textContent (Anti-XSS absolu)
-    function createSafeElement(tag, className, text = "") {
-        const el = document.createElement(tag);
-        if (className) el.className = className;
-        if (text) el.textContent = sanitizeText(text);
-        return el;
+    const points = [item.point1, item.point2, item.point3].map(safe).filter(Boolean);
+    if (points.length) {
+      const ul = document.createElement('ul');
+      ul.className = 'card-points';
+      points.forEach(p => {
+        const li = document.createElement('li');
+        li.textContent = p;
+        ul.appendChild(li);
+      });
+      card.append(ul);
     }
 
-    /* =========================================================
-       PARSING CSV VANILLA (Anti-Casse)
-       ========================================================= */
-    function parseCSV(text) {
-        const result = [];
-        let p = '', row = [''], i = 0, r = 0, s = !0, l;
-        for (l of text) {
-            if ('"' === l) {
-                if (s && l === p) row[i] += l;
-                s = !s;
-            } else if (',' === l && s) {
-                l = row[++i] = '';
-            } else if ('\n' === l && s) {
-                if ('\r' === p) row[i] = row[i].slice(0, -1);
-                result[++r] = [l = row[i = 0] = ''];
-            } else row[i] += l;
-            p = l;
-        }
-        
-        // Mapping manuel des colonnes demandées
-        const headers = result[0].map(h => h.trim().toLowerCase());
-        const mappedData = [];
-
-        for (let j = 1; j < result.length; j++) {
-            if (result[j].length < 2 || !result[j][0]) continue;
-            const obj = {};
-            headers.forEach((header, index) => {
-                obj[header] = result[j][index] ? result[j][index].trim() : "";
-            });
-            mappedData.push(obj);
-        }
-        return mappedData;
+    if (item.why_it_matters) {
+      const why = document.createElement('div');
+      why.className = 'card-why';
+      const label = document.createElement('strong');
+      label.textContent = 'Why it matters';
+      const p = document.createElement('p');
+      p.textContent = safe(item.why_it_matters);
+      why.append(label, p);
+      card.append(why);
     }
 
-    /* =========================================================
-       LOGIQUE D'AFFICHAGE & RENDU DOM
-       ========================================================= */
-    function renderFeed(data) {
-        feedEl.innerHTML = ''; // Seul innerHTML autorisé (nettoyage de conteneur sûr)
-        
-        if (data.length === 0) {
-            feedEl.appendChild(createSafeElement('div', 'error-msg', 'Aucun brief trouvé pour ces critères.'));
-            return;
-        }
+    return card;
+  }
 
-        data.forEach(item => {
-            // Card Container
-            const card = createSafeElement('article', 'card');
+  function render() {
+    const q = searchInput.value.trim().toLowerCase();
+    const cat = categoryFilter.value;
+    const imp = importanceFilter.value.toLowerCase();
 
-            // Header (Catégorie, Importance, Date)
-            const header = createSafeElement('div', 'card-header');
-            const badges = createSafeElement('div', 'badges');
-            
-            if (item.category) {
-                badges.appendChild(createSafeElement('span', 'badge', item.category));
-            }
-            
-            if (item.importance) {
-                const impClass = item.importance.toLowerCase();
-                const safeClass = ['haute', 'moyenne', 'faible'].includes(impClass) ? impClass : '';
-                badges.appendChild(createSafeElement('span', `badge ${safeClass}`, item.importance));
-            }
-            
-            header.appendChild(badges);
-            header.appendChild(createSafeElement('span', 'date', item.date));
-            card.appendChild(header);
-
-            // Titre & TL;DR
-            card.appendChild(createSafeElement('h2', 'title', item.title));
-            card.appendChild(createSafeElement('p', 'tldr', item.tldr));
-
-            // Détails (Masqués en mode 10s)
-            const details = createSafeElement('div', 'details');
-            const ul = createSafeElement('ul', 'points');
-            
-            ['point1', 'point2', 'point3'].forEach(pt => {
-                if (item[pt]) {
-                    ul.appendChild(createSafeElement('li', '', item[pt]));
-                }
-            });
-            details.appendChild(ul);
-
-            if (item.why_it_matters) {
-                const whyBox = createSafeElement('div', 'why-it-matters');
-                whyBox.appendChild(createSafeElement('span', 'why-label', 'Pourquoi ça compte'));
-                whyBox.appendChild(createSafeElement('span', '', item.why_it_matters));
-                details.appendChild(whyBox);
-            }
-
-            card.appendChild(details);
-            feedEl.appendChild(card);
-        });
-    }
-
-    /* =========================================================
-       FILTRES & RECHERCHE (Client-side)
-       ========================================================= */
-    function filterData() {
-        const query = searchInput.value.toLowerCase();
-        const cat = filterCat.value;
-        const imp = filterImp.value.toLowerCase();
-
-        const filtered = briefsData.filter(item => {
-            const matchesSearch = !query || 
-                (item.title && item.title.toLowerCase().includes(query)) || 
-                (item.tldr && item.tldr.toLowerCase().includes(query));
-            const matchesCat = !cat || item.category === cat;
-            const matchesImp = !imp || (item.importance && item.importance.toLowerCase() === imp);
-            
-            return matchesSearch && matchesCat && matchesImp;
-        });
-
-        renderFeed(filtered);
-    }
-
-    function populateCategories() {
-        categories.forEach(cat => {
-            if (!cat) return;
-            const option = document.createElement('option');
-            option.value = cat;
-            option.textContent = cat; // textContent = safe
-            filterCat.appendChild(option);
-        });
-    }
-
-    /* =========================================================
-       CHARGEMENT DES DONNÉES & CACHE
-       ========================================================= */
-    function applyData(data) {
-        briefsData = data;
-        // Tri par date (le plus récent en premier)
-        briefsData.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
-        
-        // Extraction des catégories uniques
-        briefsData.forEach(item => {
-            if (item.category) categories.add(item.category);
-        });
-        
-        populateCategories();
-        renderFeed(briefsData);
-    }
-
-    function fallbackData() {
-        // Données statiques de secours si hors-ligne et cache vide
-        return [{
-            id: "1", title: "MinuteBrief est prêt", tldr: "Ton nouveau média ultra-rapide est en ligne.",
-            point1: "Vérifie l'ID de ton Google Sheet dans le code.",
-            point2: "Assure-toi que ton Google Sheet est public.",
-            point3: "Exporte au format CSV.",
-            why_it_matters: "Cette carte s'affiche car la connexion au fichier CSV a échoué.",
-            category: "Système", date: new Date().toISOString().split('T')[0], importance: "Moyenne"
-        }];
-    }
-
-    async function loadData() {
-        // 1. Essayer de charger depuis le LocalStorage (Cache) pour affichage instantané
-        const cached = localStorage.getItem('minutebrief_cache');
-        if (cached) {
-            try { applyData(JSON.parse(cached)); } catch(e) {}
-        }
-
-        // 2. Fetch des données fraîches
-        try {
-            const response = await fetch(CSV_URL);
-            if (!response.ok) throw new Error("Erreur réseau");
-            
-            const csvText = await response.text();
-            
-            // Vérification simple pour s'assurer que c'est bien un CSV et non une page HTML d'erreur Google
-            if (csvText.trim().startsWith('<')) throw new Error("Le lien renvoie du HTML (Sheet privé ?)");
-
-            const parsedData = parseCSV(csvText);
-            
-            // Mise à jour du cache
-            localStorage.setItem('minutebrief_cache', JSON.stringify(parsedData));
-            
-            // Ré-appliquer les données fraîches silencieusement
-            categories.clear();
-            filterCat.innerHTML = '<option value="">Toutes les catégories</option>';
-            applyData(parsedData);
-
-        } catch (error) {
-            console.error("Erreur de chargement:", error);
-            if (!cached) {
-                applyData(fallbackData());
-            }
-        }
-    }
-
-    /* =========================================================
-       ÉCOUTEURS D'ÉVÉNEMENTS (Events & Toggles)
-       ========================================================= */
-    searchInput.addEventListener('input', filterData);
-    filterCat.addEventListener('change', filterData);
-    filterImp.addEventListener('change', filterData);
-
-    // Toggle Mode 10 Secondes
-    btn10s.addEventListener('click', () => {
-        document.body.classList.toggle('mode-10s');
-        btn10s.classList.toggle('active');
+    const filtered = allData.filter(item => {
+      if (cat && item.category !== cat) return false;
+      if (imp && (item.importance || '').toLowerCase() !== imp) return false;
+      if (q) {
+        const hay = [item.title, item.tldr, item.point1, item.point2, item.point3, item.why_it_matters]
+          .map(s => (s||'').toLowerCase()).join(' ');
+        if (!hay.includes(q)) return false;
+      }
+      return true;
     });
 
-    // Toggle Dark Mode avec persistance LocalStorage
-    btnDark.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        btnDark.textContent = isDark ? '☀️' : '🌙';
-        localStorage.setItem('minutebrief_theme', isDark ? 'dark' : 'light');
-    });
+    grid.innerHTML = '';
+    if (!filtered.length) {
+      empty.hidden = false;
+      return;
+    }
+    empty.hidden = true;
+    const frag = document.createDocumentFragment();
+    filtered.forEach(item => frag.appendChild(createCard(item)));
+    grid.appendChild(frag);
+  }
 
-    // Initialisation
-    window.addEventListener('DOMContentLoaded', () => {
-        // Appliquer le thème sauvegardé ou système
-        const savedTheme = localStorage.getItem('minutebrief_theme');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            document.body.classList.add('dark-mode');
-            btnDark.textContent = '☀️';
+  function populateFilters() {
+    const cats = [...new Set(allData.map(d => d.category).filter(Boolean))].sort();
+    // keep first option
+    categoryFilter.length = 1;
+    cats.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c;
+      opt.textContent = c;
+      categoryFilter.appendChild(opt);
+    });
+  }
+
+  function useData(data, fromCache = false) {
+    allData = data
+      .filter(d => d.title)
+      .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+    populateFilters();
+    render();
+    const now = new Date();
+    updatedEl.textContent = `Updated ${now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}${fromCache ? ' (cached)' : ''}`;
+  }
+
+  // ===== LOAD =====
+  async function load() {
+    showSkeleton();
+    // cache
+    try {
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (cached) {
+        const { ts, data } = JSON.parse(cached);
+        if (Date.now() - ts < CACHE_TTL && Array.isArray(data) && data.length) {
+          useData(data, true);
+          // refresh in background
+          fetchFresh(false);
+          return;
         }
+      }
+    } catch(e) {}
+    fetchFresh(true);
+  }
 
-        loadData();
-    });
+  async function fetchFresh(showLoad = true) {
+    if (showLoad) showSkeleton();
+    try {
+      const res = await fetch(CSV_URL, { cache: 'no-store' });
+      if (!res.ok) throw new Error('Network');
+      const csv = await res.text();
+      const data = parseCSV(csv);
+      if (!data.length) throw new Error('Empty');
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data }));
+      useData(data, false);
+    } catch (err) {
+      console.warn('Fetch failed, using demo data', err);
+      useData(DEMO_DATA, true);
+    }
+  }
 
+  // ===== EVENTS =====
+  let searchTimer;
+  searchInput.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(render, 120); });
+  categoryFilter.addEventListener('change', render);
+  importanceFilter.addEventListener('change', render);
+
+  // ===== DEMO DATA =====
+  const DEMO_DATA = [
+    { title: "AI Rules Finalized in EU", tldr: "Europe passes tiered-risk AI Act with audits for high-risk systems.", point1: "Foundation models need transparency docs", point2: "Banned uses include social scoring", point3: "Fines up to 7% of global revenue", why_it_matters: "Creates de facto global standard for model safety and labeling.", category: "Tech", importance: "High", date: "2025-11-20" },
+    { title: "Fed Holds Rates Steady", tldr: "Inflation cools to 2.7%, officials signal patience.", point1: "Core services inflation eases", point2: "Markets price one cut by mid-2026", point3: "Labor market remains resilient", why_it_matters: "Borrowing costs stay high for mortgages and startups.", category: "Markets", importance: "Medium", date: "2025-11-18" },
+    { title: "Battery Breakthrough Hits 600 Wh/kg", tldr: "Silicon-anode cells reach new density in lab tests.", point1: "Tested over 800 cycles", point2: "Pilot line planned for late 2026", point3: "Aviation partners already interested", why_it_matters: "Longer-range EVs and electric planes get closer to reality.", category: "Science", importance: "High", date: "2025-11-15" },
+    { title: "Major Data Breach Disclosed", tldr: "Retailer reports 12M records accessed via third-party API.", point1: "No payment data taken, emails leaked", point2: "Company resets all tokens", point3: "Regulators open inquiry", why_it_matters: "Supply-chain security under renewed scrutiny.", category: "Tech", importance: "Medium", date: "2025-11-14" },
+    { title: "Climate Summit Sets Methane Pledge", tldr: "80 nations agree to cut methane 30% by 2032.", point1: "Focus on oil, gas, agriculture", point2: "Satellite monitoring funded", point3: "Finance package $5B", why_it_matters: "Fastest lever to slow near-term warming.", category: "World", importance: "Low", date: "2025-11-12" },
+    { title: "Startup Raises $40M for On-Device AI", tldr: "Chip startup claims 5x efficiency for phone inference.", point1: "No cloud needed for summarization", point2: "SDK launches next quarter", point3: "Battery impact minimal", why_it_matters: "Privacy-first AI could shift app design.", category: "Business", importance: "Low", date: "2025-11-10" }
+  ];
+
+  // init
+  load();
 </script>
+<script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
 </body>
 </html>
