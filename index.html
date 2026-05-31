@@ -1,435 +1,595 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Turbo Info — BRAINGAIN Haltères réglables (15-en-1 & 17-en-1)</title>
-<meta name="description" content="Turbo Info — Guide premium : BRAINGAIN Ensemble d'Haltères Réglables – Paires 15-en-1 et 17-en-1 | Options 24 kg & 40 kg | Technologie Smart Click. Comparatif, exercices et programme pour musculation maison." />
-<meta name="keywords" content="BRAINGAIN, haltère réglable, haltères réglables, haltère modulable, haltères modulables, musculation maison, Smart Click, haltère 24 kg, haltère 40 kg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinuteBrief | L'essentiel en 60s</title>
+    <style>
+        /* =========================================================
+           VARIABLES & RESET
+           ========================================================= */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #111111;
+            --text-muted: #666666;
+            --card-bg: #f9f9f9;
+            --border-color: #eeeeee;
+            --accent-color: #000000;
+            --badge-bg: #e0e0e0;
+            --skeleton-bg: #e2e5e7;
+            --skeleton-shine: #f6f7f8;
+            
+            /* Importance colors */
+            --imp-haute: #ffebee;
+            --imp-haute-text: #c62828;
+            --imp-moyenne: #fff3e0;
+            --imp-moyenne-text: #ef6c00;
+            --imp-faible: #e8f5e9;
+            --imp-faible-text: #2e7d32;
 
-<!-- Open Graph -->
-<meta property="og:title" content="Turbo Info — BRAINGAIN Haltères réglables (15-en-1 & 17-en-1)" />
-<meta property="og:description" content="BRAINGAIN Ensemble d'Haltères Réglables – Paires 15-en-1 et 17-en-1. Options 24 kg et 40 kg, gain de place pour la salle de sport à domicile, technologie Smart Click." />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://via.placeholder.com/1200x630?text=BRAINGAIN+Halt%C3%A8res+15-en-1+17-en-1" />
-<meta property="og:url" content="https://ton-site.com" />
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-<!-- Structured data: WebSite + Product (BRAINGAIN) -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {
-      "@type":"WebSite",
-      "url":"https://ton-site.com",
-      "name":"Turbo Info",
-      "publisher":{"@type":"Organization","name":"Turbo Info"}
-    },
-    {
-      "@type":"Product",
-      "name":"BRAINGAIN Ensemble d'Haltères Réglables – Paires 15-en-1 et 17-en-1 | Options de 24 kg et 40 kg | Poids Gain de Place pour Salle de Sport à Domicile | Technologie Smart Click",
-      "image":["https://via.placeholder.com/800x800?text=BRAINGAIN+Halt%C3%A8res"],
-      "description":"BRAINGAIN Ensemble d'Haltères Réglables (15-en-1 / 17-en-1) disponible en options 24 kg et 40 kg. Design gain de place, technologie Smart Click pour changement de poids rapide.",
-      "sku":"BRAINGAIN-15-17-EX",
-      "brand":{"@type":"Brand","name":"BRAINGAIN"},
-      "offers":{
-        "@type":"Offer",
-        "url":"VOTRE-LIEN-AMAZON",
-        "priceCurrency":"EUR",
-        "price":"419.00",
-        "availability":"https://schema.org/InStock"
-      }
-    }
-  ]
-}
-</script>
+        /* Dark Mode variables */
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-main: #f5f5f5;
+            --text-muted: #aaaaaa;
+            --card-bg: #1e1e1e;
+            --border-color: #333333;
+            --accent-color: #ffffff;
+            --badge-bg: #333333;
+            --skeleton-bg: #2a2a2a;
+            --skeleton-shine: #3a3a3a;
+            
+            --imp-haute: #4a1c1c;
+            --imp-haute-text: #ff8a80;
+            --imp-moyenne: #4d2c10;
+            --imp-moyenne-text: #ffd180;
+            --imp-faible: #1b3a1e;
+            --imp-faible-text: #b9f6ca;
+        }
 
-<style>
-/* ===== RESET SIMPLE ===== */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#0f1724;background:#f6f8fb;line-height:1.6}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-/* ===== THEME (Fitness Premium) ===== */
-:root{
-  --bg:#f6f8fb;
-  --card:#ffffff;
-  --accent:#0ea5e9;
-  --accent-2:#06b6d4;
-  --muted:#64748b;
-  --accent-cta:#ff6f61;
-  --radius:14px;
-  --maxw:1200px;
-}
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            transition: background-color 0.3s, color 0.3s;
+            -webkit-font-smoothing: antialiased;
+        }
 
-/* header / nav */
-.header-hero{
-  background:linear-gradient(90deg, rgba(6,182,212,0.12), rgba(14,165,233,0.06)), url('https://via.placeholder.com/1600x600?text=BRAINGAIN+Halt%C3%A8res') center/cover no-repeat;
-  padding:72px 20px 48px;
-  text-align:center;
-  position:relative;
-}
-nav.topnav{
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  max-width:var(--maxw);margin:0 auto;padding:12px 18px;background:rgba(255,255,255,0.85);border-radius:12px;box-shadow:0 6px 22px rgba(2,6,23,0.06);
-}
-.brand{display:flex;gap:12px;align-items:center}
-.brand .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;box-shadow:0 6px 18px rgba(14,165,233,0.18)}
-.brand h1{margin:0;font-size:1.05rem;color:#022;letter-spacing:0.4px}
-nav .menu{display:flex;gap:18px;align-items:center}
-nav .menu a{color:#022;text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px}
-nav .menu a:hover{background:rgba(14,165,233,0.08);color:var(--accent)}
+        /* =========================================================
+           LAYOUT & HEADER
+           ========================================================= */
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-/* hero */
-.hero-title{font-size:2.2rem;margin:12px 0 6px;color:#022;font-weight:800}
-.hero-sub{color:var(--muted);font-size:1rem;margin-bottom:18px}
-.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-.cta-primary{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:#fff;padding:14px 22px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:0 12px 30px rgba(6,182,212,0.18)}
-.cta-secondary{background:transparent;border:2px solid rgba(2,6,23,0.06);padding:12px 18px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:700}
+        header {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-/* main layout */
-.main{max-width:var(--maxw);margin:30px auto;padding:0 18px;display:grid;grid-template-columns: 1fr 320px;gap:28px}
-.content{min-width:0}
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* article cards */
-.card-article{background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:0 14px 40px rgba(2,6,23,0.06);margin-bottom:26px;overflow:hidden}
-.card-article h2{margin-top:0;color:var(--accent);font-size:1.6rem}
-.card-article h3{color:#022;margin-bottom:8px}
-.lead{color:var(--muted);margin-bottom:12px}
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
 
-/* split */
-.split{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:center}
-.split img{width:100%;border-radius:12px;display:block;}
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
 
-/* compare table */
-.table-compare{width:100%;border-collapse:collapse;margin-top:12px}
-.table-compare th,.table-compare td{padding:10px 12px;border-bottom:1px solid #eef2f7;text-align:left}
-.table-compare th{background:#f8fbff;color:#023;padding-top:14px;padding-bottom:14px}
+        button {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
 
-/* sidebar */
-.sidebar{position:sticky;top:96px;background:var(--card);padding:18px;border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,0.06)}
-.sidebar h4{margin:0 0 10px;color:var(--accent);font-size:1.05rem}
-.product-list{display:flex;flex-direction:column;gap:12px}
-.product-item{display:flex;gap:12px;align-items:center;padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfeff);box-shadow:0 6px 18px rgba(2,6,23,0.04)}
-.product-item img{width:64px;height:64px;border-radius:10px;object-fit:cover}
-.product-item a{text-decoration:none;color:#022;font-weight:700}
+        button:hover {
+            border-color: var(--text-muted);
+        }
 
-/* FAQ */
-.faq{margin-top:18px}
-.faq details{background:#fbfdff;padding:12px;border-radius:8px;margin-bottom:10px}
-.faq summary{font-weight:700;color:#022;cursor:pointer}
+        button.active {
+            background: var(--text-main);
+            color: var(--bg-color);
+        }
 
-/* floating */
-.floating-buy{position:fixed;right:20px;bottom:28px;background:var(--accent);color:#fff;padding:14px 20px;border-radius:999px;box-shadow:0 18px 40px rgba(6,182,212,0.18);text-decoration:none;font-weight:800;z-index:999}
-.backtop{position:fixed;right:20px;bottom:90px;background:#fff;color:var(--accent);padding:10px;border-radius:10px;box-shadow:0 8px 20px rgba(2,6,23,0.06);border:1px solid #e6f3fb;display:none}
+        .filters {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-/* footer */
-.footer{margin-top:40px;padding:28px;text-align:center;color:#fff;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:12px;margin-bottom:40px}
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-main);
+            font-size: 1rem;
+        }
 
-/* responsive */
-@media (max-width:1100px){
-  .main{grid-template-columns:1fr 300px}
-  .split{grid-template-columns:1fr}
-}
-@media (max-width:860px){
-  nav.topnav{flex-direction:column;gap:12px;padding:12px}
-  .main{grid-template-columns:1fr; padding:0 12px}
-  .sidebar{position:relative;top:auto}
-  .split{grid-template-columns:1fr}
-  .header-hero{padding:48px 16px}
-  .hero-title{font-size:1.6rem}
-}
-small.muted{color:var(--muted);display:block;margin-top:8px}
-</style>
+        .filter-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* =========================================================
+           CARDS (BRIEFS)
+           ========================================================= */
+        #feed {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+
+        .badges {
+            display: flex;
+            gap: 8px;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            background: var(--badge-bg);
+            color: var(--text-main);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.haute { background: var(--imp-haute); color: var(--imp-haute-text); }
+        .badge.moyenne { background: var(--imp-moyenne); color: var(--imp-moyenne-text); }
+        .badge.faible { background: var(--imp-faible); color: var(--imp-faible-text); }
+
+        .date {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .tldr {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            border-left: 3px solid var(--text-muted);
+            padding-left: 10px;
+        }
+
+        .details {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .points {
+            list-style-type: none;
+            margin-bottom: 15px;
+        }
+
+        .points li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .points li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        .why-it-matters {
+            background: var(--bg-color);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .why-label {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* 10 Seconds Mode Toggle */
+        body.mode-10s .details {
+            display: none;
+        }
+
+        /* =========================================================
+           SKELETON LOADING
+           ========================================================= */
+        .skeleton {
+            background: var(--skeleton-bg);
+            background-image: linear-gradient(
+                90deg, 
+                var(--skeleton-bg) 0px, 
+                var(--skeleton-shine) 40px, 
+                var(--skeleton-bg) 80px
+            );
+            background-size: 200% 100%;
+            animation: shine 1.5s infinite ease-out;
+            border-radius: 4px;
+        }
+
+        .sk-card { height: 200px; border-radius: 12px; margin-bottom: 20px; }
+
+        @keyframes shine {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .error-msg {
+            text-align: center;
+            color: var(--imp-haute-text);
+            padding: 20px;
+            background: var(--imp-haute);
+            border-radius: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            h1 { font-size: 1.5rem; }
+            .filter-row { flex-direction: column; }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- NAV / TOP -->
-  <div style="padding:16px 18px;background:transparent;">
-    <nav class="topnav" aria-label="Menu principal">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">TI</div>
-        <div>
-          <h1 style="font-size:1rem;margin:0">Turbo Info</h1>
-          <small class="muted">BRAINGAIN • Haltères réglables • Musculation maison</small>
+
+<div class="container">
+    <header>
+        <div class="header-top">
+            <h1>MinuteBrief</h1>
+            <div class="controls">
+                <button id="btn-10s" title="Mode 10 secondes (TL;DR uniquement)">⚡ 10s</button>
+                <button id="btn-dark" title="Mode Sombre">🌙</button>
+            </div>
         </div>
-      </div>
-      <div class="menu" role="navigation" aria-label="Navigation principale">
-        <a href="#guide">Guide</a>
-        <a href="#exercices">Exercices</a>
-        <a href="#comparatif">Comparatif</a>
-        <a href="#erreurs">Erreurs</a>
-        <a href="#routine">Routine</a>
-      </div>
-    </nav>
-  </div>
-
-  <!-- HERO -->
-  <header class="header-hero" role="banner">
-    <div class="wrap">
-      <p style="margin:0;font-weight:700;color:#063244">Turbo Info — BRAINGAIN</p>
-      <h2 class="hero-title">BRAINGAIN Ensemble d'Haltères Réglables – Paires 15-en-1 et 17-en-1</h2>
-      <p class="hero-sub">Options de 24 kg et 40 kg • Poids gain de place pour salle de sport à domicile • Technologie Smart Click pour changement rapide.</p>
-      <div class="hero-ctas">
-        <a class="cta-primary" href="#guide">Découvrir le guide BRAINGAIN</a>
-        <a class="cta-secondary" href="#comparatif">Voir le comparatif</a>
-      </div>
-
-      <div class="callout" style="max-width:900px;margin:22px auto 0">
-        <div class="icon" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 12h2v-2H2v2zM20 10v2h2v-2h-2zM4 7h2V5H4v2zM18 5v2h2V5h-2zM6 17h2v2H6v-2zM16 19v-2h2v2h-2zM8 9h8v6H8V9z" fill="#06b6d4"/></svg>
+        <div class="filters">
+            <input type="text" id="search-input" placeholder="Rechercher un sujet..." autocomplete="off">
+            <div class="filter-row">
+                <select id="filter-category">
+                    <option value="">Toutes les catégories</option>
+                </select>
+                <select id="filter-importance">
+                    <option value="">Toutes les importances</option>
+                    <option value="haute">Haute</option>
+                    <option value="moyenne">Moyenne</option>
+                    <option value="faible">Faible</option>
+                </select>
+            </div>
         </div>
-        <p><strong>Produit mis en avant :</strong> BRAINGAIN Ensemble d'Haltères Réglables – Paires 15-en-1 et 17-en-1 (24 kg & 40 kg) — Smart Click.</p>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- MAIN -->
-  <main class="main" id="main">
-    <section class="content">
-
-      <!-- ARTICLE 1: Guide (split) -->
-      <article class="card-article" id="guide">
-        <div class="split">
-          <div>
-            <h2>Guide BRAINGAIN — choisir la bonne option</h2>
-            <p class="lead">BRAINGAIN Ensemble d'Haltères Réglables – Paires 15-en-1 et 17-en-1 est proposé en options 24 kg et 40 kg. Ce guide vous aide à choisir la version adaptée à votre niveau, espace et objectifs de musculation maison.</p>
-
-            <h3>Pourquoi la version BRAINGAIN ?</h3>
-            <p>BRAINGAIN se distingue par son <strong>technologie Smart Click</strong> qui permet de changer le poids rapidement — idéal pour les circuits et supersets. L'ensemble 15-en-1/17-en-1 offre une grande plage de réglages tout en restant compact.</p>
-
-            <h3>Quel modèle choisir ?</h3>
-            <p><strong>24 kg</strong> — parfait pour débutants et utilisateurs avec espace limité. <strong>40 kg</strong> — recommandé si vous êtes intermédiaire/confirmé ou si vous prévoyez progresser sérieusement.</p>
-
-            <div class="conseil">💡 Conseil Turbo Info : prenez en compte vos objectifs (force vs tonification). Si vous prévoyez d’augmenter fortement les charges, la version 40 kg est plus durable.</div>
-
-            <a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank" rel="nofollow noopener">Voir BRAINGAIN (24 kg / 40 kg) sur Amazon</a>
-            <p style="margin-top:10px"><small class="muted">Produit : BRAINGAIN Ensemble d'Haltères Réglables – Paires 15-en-1 et 17-en-1 | Technologie Smart Click.</small></p>
-          </div>
-
-          <div>
-            <img src="https://via.placeholder.com/360x300?text=BRAINGAIN+24kg+40kg" alt="BRAINGAIN Ensemble d'Haltères Réglables 15-en-1 17-en-1 24kg 40kg Smart Click" loading="lazy">
-            <small class="muted">Image illustrative — remplace par photos produit BRAINGAIN pour améliorer la conversion.</small>
-          </div>
-        </div>
-      </article>
-
-      <!-- ARTICLE 2: Exercises -->
-      <article class="card-article" id="exercices">
-        <h2>Exercices avec le BRAINGAIN haltère réglable</h2>
-        <p class="lead">Utilisez BRAINGAIN pour construire des séances complètes : pectoraux, dos, jambes, épaules et bras. Avec Smart Click, passez rapidement d'un poids à l'autre.</p>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:14px">
-          <div style="background:#fff;border-radius:12px;padding:14px;box-shadow:0 10px 26px rgba(2,6,23,0.04)">
-            <h3 style="margin:0 0 8px;color:#022">Pectoraux</h3>
-            <p style="margin:0">Développé couché, écartés inclinés — 3x8–12. BRAINGAIN facilite l'ajustement pour chaque série.</p>
-          </div>
-          <div style="background:#fff;border-radius:12px;padding:14px;box-shadow:0 10px 26px rgba(2,6,23,0.04)">
-            <h3 style="margin:0 0 8px;color:#022">Biceps / Triceps</h3>
-            <p style="margin:0">Curl, curl marteau, extensions — variez les charges grâce au mécanisme 15/17 réglages.</p>
-          </div>
-          <div style="background:#fff;border-radius:12px;padding:14px;box-shadow:0 10px 26px rgba(2,6,23,0.04)">
-            <h3 style="margin:0 0 8px;color:#022">Jambes</h3>
-            <p style="margin:0">Squat goblet, fentes et soulevé de terre jambes tendues — BRAINGAIN 40 kg est recommandé pour les progressions sérieuses.</p>
-          </div>
-          <div style="background:#fff;border-radius:12px;padding:14px;box-shadow:0 10px 26px rgba(2,6,23,0.04)">
-            <h3 style="margin:0 0 8px;color:#022">Dos & Épaules</h3>
-            <p style="margin:0">Rowing unilatéral, élévations latérales — contrôlez la charge précisément.</p>
-          </div>
-        </div>
-
-        <div style="margin-top:18px">
-          <h3>Routine hebdomadaire avec BRAINGAIN</h3>
-          <ol>
-            <li>Lundi — Pectoraux + Triceps (utilisez 15–17 réglages pour varier intensité)</li>
-            <li>Mardi — Dos + Biceps</li>
-            <li>Jeudi — Jambes</li>
-            <li>Vendredi — Full body & mobilité</li>
-          </ol>
-        </div>
-
-        <div class="conseil">💡 Astuce : profitez du Smart Click pour maintenir un tempo d'entraînement élevé (peu de perte de temps entre séries).</div>
-
-        <a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank" rel="nofollow noopener">Acheter BRAINGAIN — Smart Click</a>
-      </article>
-
-      <!-- ARTICLE 3: Comparatif -->
-      <article class="card-article" id="comparatif">
-        <h2>Comparatif — BRAINGAIN vs autres haltères modulables</h2>
-        <p class="lead">Focus sur rapidité d'ajustement, compacité et rapport qualité/prix.</p>
-
-        <table class="table-compare" aria-label="Comparatif haltères">
-          <thead>
-            <tr><th>Modèle</th><th>Poids</th><th>Mécanisme</th><th>Idéal pour</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>BRAINGAIN (15/17-en-1)</td><td>24 kg / 40 kg</td><td>Smart Click</td><td>Gain de place + séance fluide</td></tr>
-            <tr><td>Haltère à goupille</td><td>2–32 kg</td><td>Pin Lock</td><td>Budget serré</td></tr>
-            <tr><td>Haltère Dial (haut de gamme)</td><td>2–40 kg</td><td>Dial</td><td>Usage intensif & design</td></tr>
-          </tbody>
-        </table>
-
-        <p style="margin-top:12px">Pour la majorité des utilisateurs qui veulent rapidité et compacité, le BRAINGAIN (Smart Click) offre un bon équilibre entre prix et praticité.</p>
-
-        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
-          <a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank" rel="nofollow noopener">Voir BRAINGAIN sur Amazon</a>
-          <a class="cta-secondary" href="#guide">Conseils d'achat détaillés</a>
-        </div>
-      </article>
-
-      <!-- ARTICLE 4: Erreurs -->
-      <article class="card-article" id="erreurs">
-        <h2>Erreurs fréquentes & sécurité — avec BRAINGAIN</h2>
-        <p class="lead">Même avec du bon matériel comme BRAINGAIN, la technique et la sécurité priment.</p>
-
-        <h3>Mauvaise fixation / vérification</h3>
-        <p>Avec les haltères réglables BRAINGAIN Smart Click, vérifiez toujours que le cadran/cliquet est bien enclenché avant chaque série.</p>
-
-        <h3>Sauter l'échauffement</h3>
-        <p>Échauffez-vous 8–10 minutes (mobility + cardio léger) — crucial pour séries lourdes même avec 24 kg.</p>
-
-        <div class="conseil">💡 Sécurité : rangez les plaques et le support correctement pour éviter que le set ne roule ou tombe.</div>
-
-        <h3>Technique avant charge</h3>
-        <p>Travaillez le contrôle et la cadence (2s concentrique / 3s excentrique) avec BRAINGAIN pour stimuler la force sans blessure.</p>
-
-        <a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank" rel="nofollow noopener">Acheter BRAINGAIN — Pack sécurisé</a>
-      </article>
-
-      <!-- ARTICLE 5: Routine 4 semaines -->
-      <article class="card-article" id="routine">
-        <h2>Programme 4 semaines — avec BRAINGAIN</h2>
-        <p class="lead">Un plan simple pour progresser rapidement avec un haltère réglable BRAINGAIN.</p>
-
-        <h3>Semaine 1 — Technique</h3>
-        <ul>
-          <li>3 séances full body, charges légères (24 kg conseillé pour débutants)</li>
-          <li>Apprenez amplitude et posture</li>
-        </ul>
-
-        <h3>Semaine 2 — Volume</h3>
-        <ul>
-          <li>4 séances, split push/pull/legs</li>
-          <li>Augmentez le volume et maîtrisez le Smart Click</li>
-        </ul>
-
-        <h3>Semaine 3 — Intensité</h3>
-        <ul>
-          <li>Supersets, tempo contrôlé, progression de charge (40kg pour confirmés)</li>
-        </ul>
-
-        <h3>Semaine 4 — Peak</h3>
-        <ul>
-          <li>Testez vos meilleures séries et notez vos charges</li>
-          <li>Planifiez la suite (cycle 8–12 semaines)</li>
-        </ul>
-
-        <div class="conseil">💡 Astuce : passez de la version 24 kg à 40 kg seulement si vos principaux mouvements restent maîtrisés.</div>
-
-        <a class="buy-btn" href="VOTRE-LIEN-AMAZON" target="_blank" rel="nofollow noopener">Voir BRAINGAIN — Acheter maintenant</a>
-      </article>
-
-      <!-- FAQ block (site-level) -->
-      <article class="card-article" id="faq">
-        <h2>FAQ — BRAINGAIN & haltères réglables</h2>
-        <div class="faq">
-          <details><summary>Quelles sont les différences entre 15-en-1 et 17-en-1 ?</summary><p>Le nombre de réglages (15 vs 17) correspond aux incréments disponibles ; choisissez selon la précision de charge souhaitée.</p></details>
-          <details><summary>Le Smart Click est-il sécurisé ?</summary><p>Oui, la technologie Smart Click verrouille la charge ; vérifiez simplement l’enclenchement avant l’utilisation.</p></details>
-          <details><summary>Quelle option pour un petit appartement ?</summary><p>La version 24 kg est souvent suffisante et prend moins de place ; le set BRAINGAIN reste compact.</p></details>
-        </div>
-      </article>
-
-    </section>
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar" aria-labelledby="sidebar-title">
-      <h4 id="sidebar-title">Produits BRAINGAIN recommandés</h4>
-      <div class="product-list">
-        <div class="product-item">
-          <img src="https://via.placeholder.com/80x80?text=24kg" alt="BRAINGAIN haltère réglable 24 kg" loading="lazy">
-          <div><a href="VOTRE-LIEN-AMAZON" target="_blank" rel="nofollow noopener">BRAINGAIN 24 kg — Paires 15-en-1</a><br><small class="muted">Compact — débutant</small></div>
-        </div>
-
-        <div class="product-item">
-          <img src="https://via.placeholder.com/80x80?text=40kg" alt="BRAINGAIN haltère réglable 40 kg" loading="lazy">
-          <div><a href="VOTRE-LIEN-AMAZON" target="_blank" rel="nofollow noopener">BRAINGAIN 40 kg — Paires 17-en-1</a><br><small class="muted">Progression — intermédiaire/confirmé</small></div>
-        </div>
-
-        <div class="product-item">
-          <img src="https://via.placeholder.com/80x80?text=Smart+Click" alt="BRAINGAIN Smart Click" loading="lazy">
-          <div><a href="VOTRE-LIEN-AMAZON" target="_blank" rel="nofollow noopener">BRAINGAIN — Technologie Smart Click</a><br><small class="muted">Changement rapide</small></div>
-        </div>
-      </div>
-
-      <div style="margin-top:18px">
-        <h4 style="margin-bottom:8px;color:#022">Ressources rapides</h4>
-        <ul style="margin:0;padding-left:18px;color:var(--muted)">
-          <li><a href="#exercices" style="color:var(--accent)">Exercices essentiels</a></li>
-          <li><a href="#routine" style="color:var(--accent)">Programme 4 semaines</a></li>
-          <li><a href="#comparatif" style="color:var(--accent)">Comparatif rapide</a></li>
-        </ul>
-      </div>
-    </aside>
-  </main>
-
-  <!-- Floating CTA + back to top -->
-  <a class="floating-buy" href="VOTRE-LIEN-AMAZON" target="_blank" rel="nofollow noopener">Acheter BRAINGAIN maintenant</a>
-  <button class="backtop" id="backtop" aria-label="Retour en haut">↑</button>
-
-  <!-- Footer -->
-  <div class="footer">
-    <div style="max-width:var(--maxw);margin:0 auto;padding:4px 18px">
-      <p style="margin:0;font-weight:700">Turbo Info — BRAINGAIN Haltères réglables • Musculation maison</p>
-      <small style="opacity:0.95">Site indépendant — affilié Amazon</small>
-    </div>
-  </div>
-
-  <!-- JSON-LD FAQ for rich snippets -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"Quelle option BRAINGAIN choisir (24 kg ou 40 kg) ?","acceptedAnswer":{"@type":"Answer","text":"24 kg pour débutants et petits espaces, 40 kg pour progression et entraînement intensif."}},
-      {"@type":"Question","name":"La technologie Smart Click est-elle fiable ?","acceptedAnswer":{"@type":"Answer","text":"Oui, Smart Click permet un verrouillage rapide et sûr du poids, idéal pour circuits rapides."}},
-      {"@type":"Question","name":"Comment entretenir les haltères BRAINGAIN ?","acceptedAnswer":{"@type":"Answer","text":"Essuyez après usage, évitez l'humidité et vérifiez les parties mobiles périodiquement."}}
-    ]
-  }
-  </script>
+    <main id="feed">
+        <div class="skeleton sk-card"></div>
+        <div class="skeleton sk-card"></div>
+        <div class="skeleton sk-card"></div>
+    </main>
+</div>
 
 <script>
-/* ========== INTERACTIVITY ========== */
-document.addEventListener('DOMContentLoaded',function(){
+    /* =========================================================
+       CONFIGURATION & VARIABLES
+       ========================================================= */
+    // ⚠️ REMPLACE CECI PAR L'ID DE TON GOOGLE SHEET
+    const SHEET_ID = "1a2b3c4d5e6f7g8h9i0j-EXEMPLE-REMPLACER"; 
+    
+    const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`;
+    let briefsData = [];
+    let categories = new Set();
 
-  // back to top
-  const back = document.getElementById('backtop');
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 360) back.style.display = 'block'; else back.style.display = 'none';
-  });
-  back.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+    // DOM Elements
+    const feedEl = document.getElementById('feed');
+    const searchInput = document.getElementById('search-input');
+    const filterCat = document.getElementById('filter-category');
+    const filterImp = document.getElementById('filter-importance');
+    const btn10s = document.getElementById('btn-10s');
+    const btnDark = document.getElementById('btn-dark');
 
-  // Smooth anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{
-      const href = a.getAttribute('href');
-      if(href.startsWith('#') && href.length>1){
-        e.preventDefault();
-        const el = document.querySelector(href);
-        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-      }
+    /* =========================================================
+       SÉCURITÉ & SANITIZATION
+       ========================================================= */
+    // Supprime toute forme d'URL pour empêcher le phishing ou l'injection
+    function sanitizeText(str) {
+        if (!str) return "";
+        // Regex stricte pour attraper http, https, www, et les TLDs courants
+        const urlRegex = /((https?:\/\/)|(www\.))[^\s]+|[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,}(\/[^\s]*)?/gi;
+        return str.replace(urlRegex, '[Lien masqué]');
+    }
+
+    // Crée un élément DOM en utilisant uniquement textContent (Anti-XSS absolu)
+    function createSafeElement(tag, className, text = "") {
+        const el = document.createElement(tag);
+        if (className) el.className = className;
+        if (text) el.textContent = sanitizeText(text);
+        return el;
+    }
+
+    /* =========================================================
+       PARSING CSV VANILLA (Anti-Casse)
+       ========================================================= */
+    function parseCSV(text) {
+        const result = [];
+        let p = '', row = [''], i = 0, r = 0, s = !0, l;
+        for (l of text) {
+            if ('"' === l) {
+                if (s && l === p) row[i] += l;
+                s = !s;
+            } else if (',' === l && s) {
+                l = row[++i] = '';
+            } else if ('\n' === l && s) {
+                if ('\r' === p) row[i] = row[i].slice(0, -1);
+                result[++r] = [l = row[i = 0] = ''];
+            } else row[i] += l;
+            p = l;
+        }
+        
+        // Mapping manuel des colonnes demandées
+        const headers = result[0].map(h => h.trim().toLowerCase());
+        const mappedData = [];
+
+        for (let j = 1; j < result.length; j++) {
+            if (result[j].length < 2 || !result[j][0]) continue;
+            const obj = {};
+            headers.forEach((header, index) => {
+                obj[header] = result[j][index] ? result[j][index].trim() : "";
+            });
+            mappedData.push(obj);
+        }
+        return mappedData;
+    }
+
+    /* =========================================================
+       LOGIQUE D'AFFICHAGE & RENDU DOM
+       ========================================================= */
+    function renderFeed(data) {
+        feedEl.innerHTML = ''; // Seul innerHTML autorisé (nettoyage de conteneur sûr)
+        
+        if (data.length === 0) {
+            feedEl.appendChild(createSafeElement('div', 'error-msg', 'Aucun brief trouvé pour ces critères.'));
+            return;
+        }
+
+        data.forEach(item => {
+            // Card Container
+            const card = createSafeElement('article', 'card');
+
+            // Header (Catégorie, Importance, Date)
+            const header = createSafeElement('div', 'card-header');
+            const badges = createSafeElement('div', 'badges');
+            
+            if (item.category) {
+                badges.appendChild(createSafeElement('span', 'badge', item.category));
+            }
+            
+            if (item.importance) {
+                const impClass = item.importance.toLowerCase();
+                const safeClass = ['haute', 'moyenne', 'faible'].includes(impClass) ? impClass : '';
+                badges.appendChild(createSafeElement('span', `badge ${safeClass}`, item.importance));
+            }
+            
+            header.appendChild(badges);
+            header.appendChild(createSafeElement('span', 'date', item.date));
+            card.appendChild(header);
+
+            // Titre & TL;DR
+            card.appendChild(createSafeElement('h2', 'title', item.title));
+            card.appendChild(createSafeElement('p', 'tldr', item.tldr));
+
+            // Détails (Masqués en mode 10s)
+            const details = createSafeElement('div', 'details');
+            const ul = createSafeElement('ul', 'points');
+            
+            ['point1', 'point2', 'point3'].forEach(pt => {
+                if (item[pt]) {
+                    ul.appendChild(createSafeElement('li', '', item[pt]));
+                }
+            });
+            details.appendChild(ul);
+
+            if (item.why_it_matters) {
+                const whyBox = createSafeElement('div', 'why-it-matters');
+                whyBox.appendChild(createSafeElement('span', 'why-label', 'Pourquoi ça compte'));
+                whyBox.appendChild(createSafeElement('span', '', item.why_it_matters));
+                details.appendChild(whyBox);
+            }
+
+            card.appendChild(details);
+            feedEl.appendChild(card);
+        });
+    }
+
+    /* =========================================================
+       FILTRES & RECHERCHE (Client-side)
+       ========================================================= */
+    function filterData() {
+        const query = searchInput.value.toLowerCase();
+        const cat = filterCat.value;
+        const imp = filterImp.value.toLowerCase();
+
+        const filtered = briefsData.filter(item => {
+            const matchesSearch = !query || 
+                (item.title && item.title.toLowerCase().includes(query)) || 
+                (item.tldr && item.tldr.toLowerCase().includes(query));
+            const matchesCat = !cat || item.category === cat;
+            const matchesImp = !imp || (item.importance && item.importance.toLowerCase() === imp);
+            
+            return matchesSearch && matchesCat && matchesImp;
+        });
+
+        renderFeed(filtered);
+    }
+
+    function populateCategories() {
+        categories.forEach(cat => {
+            if (!cat) return;
+            const option = document.createElement('option');
+            option.value = cat;
+            option.textContent = cat; // textContent = safe
+            filterCat.appendChild(option);
+        });
+    }
+
+    /* =========================================================
+       CHARGEMENT DES DONNÉES & CACHE
+       ========================================================= */
+    function applyData(data) {
+        briefsData = data;
+        // Tri par date (le plus récent en premier)
+        briefsData.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+        
+        // Extraction des catégories uniques
+        briefsData.forEach(item => {
+            if (item.category) categories.add(item.category);
+        });
+        
+        populateCategories();
+        renderFeed(briefsData);
+    }
+
+    function fallbackData() {
+        // Données statiques de secours si hors-ligne et cache vide
+        return [{
+            id: "1", title: "MinuteBrief est prêt", tldr: "Ton nouveau média ultra-rapide est en ligne.",
+            point1: "Vérifie l'ID de ton Google Sheet dans le code.",
+            point2: "Assure-toi que ton Google Sheet est public.",
+            point3: "Exporte au format CSV.",
+            why_it_matters: "Cette carte s'affiche car la connexion au fichier CSV a échoué.",
+            category: "Système", date: new Date().toISOString().split('T')[0], importance: "Moyenne"
+        }];
+    }
+
+    async function loadData() {
+        // 1. Essayer de charger depuis le LocalStorage (Cache) pour affichage instantané
+        const cached = localStorage.getItem('minutebrief_cache');
+        if (cached) {
+            try { applyData(JSON.parse(cached)); } catch(e) {}
+        }
+
+        // 2. Fetch des données fraîches
+        try {
+            const response = await fetch(CSV_URL);
+            if (!response.ok) throw new Error("Erreur réseau");
+            
+            const csvText = await response.text();
+            
+            // Vérification simple pour s'assurer que c'est bien un CSV et non une page HTML d'erreur Google
+            if (csvText.trim().startsWith('<')) throw new Error("Le lien renvoie du HTML (Sheet privé ?)");
+
+            const parsedData = parseCSV(csvText);
+            
+            // Mise à jour du cache
+            localStorage.setItem('minutebrief_cache', JSON.stringify(parsedData));
+            
+            // Ré-appliquer les données fraîches silencieusement
+            categories.clear();
+            filterCat.innerHTML = '<option value="">Toutes les catégories</option>';
+            applyData(parsedData);
+
+        } catch (error) {
+            console.error("Erreur de chargement:", error);
+            if (!cached) {
+                applyData(fallbackData());
+            }
+        }
+    }
+
+    /* =========================================================
+       ÉCOUTEURS D'ÉVÉNEMENTS (Events & Toggles)
+       ========================================================= */
+    searchInput.addEventListener('input', filterData);
+    filterCat.addEventListener('change', filterData);
+    filterImp.addEventListener('change', filterData);
+
+    // Toggle Mode 10 Secondes
+    btn10s.addEventListener('click', () => {
+        document.body.classList.toggle('mode-10s');
+        btn10s.classList.toggle('active');
     });
-  });
 
-  // Accessibility: focus outline when keyboard used
-  function handleFirstTab(e) {
-    if(e.key === 'Tab') document.documentElement.classList.add('user-is-tabbing');
-    window.removeEventListener('keydown', handleFirstTab);
-  }
-  window.addEventListener('keydown', handleFirstTab);
+    // Toggle Dark Mode avec persistance LocalStorage
+    btnDark.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        btnDark.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('minutebrief_theme', isDark ? 'dark' : 'light');
+    });
 
-});
+    // Initialisation
+    window.addEventListener('DOMContentLoaded', () => {
+        // Appliquer le thème sauvegardé ou système
+        const savedTheme = localStorage.getItem('minutebrief_theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.body.classList.add('dark-mode');
+            btnDark.textContent = '☀️';
+        }
+
+        loadData();
+    });
+
 </script>
 </body>
 </html>
-
